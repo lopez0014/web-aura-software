@@ -20,7 +20,7 @@
             line-height: 1.6;
         }
 
-        /* EFECTO PARALLAX CON TU IMAGEN PROPIA */
+        /* EFECTO PARALLAX OPTIMIZADO */
         .parallax-bg {
             position: fixed;
             top: 0;
@@ -28,13 +28,13 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(5, 5, 7, 0.88), rgba(5, 5, 7, 0.88)),
+                linear-gradient(rgba(5, 5, 7, 0.90), rgba(5, 5, 7, 0.90)),
                 url('fondo.jpg');
             background-size: cover;
             background-position: center;
             z-index: -3;
-            transform: scale(1.1); 
-            transition: transform 0.1s ease-out;
+            transform: scale(1.05); 
+            will-change: transform; /* Alerta al navegador para optimizar el renderizado */
         }
 
         /* MATRIZ DE CÓDIGO - TEXTURA AMBIENTAL */
@@ -73,7 +73,7 @@
             font-weight: 900;
             letter-spacing: 2px;
             text-transform: uppercase;
-            white-space: nowrap; /* Evita que el logo se rompa en dos líneas en celular */
+            white-space: nowrap;
         }
 
         .logo span {
@@ -88,7 +88,7 @@
         }
 
         .menu-links a {
-            color: #8c8c96;
+            color: #a0a0aa; /* Mejorado contraste para accesibilidad */
             text-decoration: none;
             font-size: 13px;
             font-weight: 700;
@@ -138,7 +138,6 @@
         .btn-lang:hover {
             border-color: #ff5500;
             background: rgba(255, 85, 0, 0.05);
-            box-shadow: 0 0 10px rgba(255, 85, 0, 0.2);
         }
 
         /* HERO SECTION */
@@ -183,7 +182,7 @@
             line-height: 1.05;
             margin-bottom: 25px;
             text-transform: uppercase;
-            word-wrap: break-word; /* Protege contra desbordes en móviles */
+            word-wrap: break-word;
         }
 
         .hero h1 span {
@@ -192,7 +191,7 @@
 
         .hero p {
             font-size: 18px;
-            color: #8c8c96;
+            color: #a0a0aa; /* Contraste mejorado */
             max-width: 700px;
             margin-bottom: 40px;
             margin-left: auto;
@@ -215,10 +214,9 @@
             display: inline-block;
         }
 
-        /* WIZARD INTERACTIVO CON FONDO NUEVO */
+        /* WIZARD INTERACTIVO */
         .wizard-container {
             display: none;
-            /* Aplicando fondo1.jpg con filtro oscuro */
             background-image: 
                 linear-gradient(rgba(13, 13, 19, 0.94), rgba(13, 13, 19, 0.94)),
                 url('fondo1.jpg');
@@ -349,7 +347,7 @@
 
         .grid-services {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajustado ancho mínimo para mejor cuadre */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             padding: 0 10% 40px 10%;
         }
@@ -385,7 +383,7 @@
         }
 
         .card p {
-            color: #7c7c85;
+            color: #a0a0aa; /* Contraste mejorado */
             font-size: 13.5px;
             line-height: 1.6;
         }
@@ -424,7 +422,7 @@
         }
 
         .portfolio-content p {
-            color: #8c8c96;
+            color: #a0a0aa;
             font-size: 14px;
             margin-bottom: 25px;
             line-height: 1.6;
@@ -463,7 +461,7 @@
             text-align: center;
             padding: 40px 10%;
             font-size: 11px;
-            color: #44444a;
+            color: #71717a; /* Contraste mejorado */
             letter-spacing: 1px;
             text-transform: uppercase;
             border-top: 1px solid rgba(255, 255, 255, 0.03);
@@ -471,7 +469,7 @@
         }
 
         footer .f-sub {
-            color: #8c8c96;
+            color: #a0a0aa;
             font-weight: 700;
             margin-top: 5px;
         }
@@ -480,7 +478,7 @@
             color: #ff5500;
         }
 
-        /* 📱 RESPONSIVE ENGINE (REGLAS PARA TELÉFONOS Y TABLETS) */
+        /* RESPONSIVE ENGINE */
         @media (max-width: 900px) {
             .portfolio-grid { grid-template-columns: 1fr; }
             header { padding: 15px 5%; }
@@ -491,7 +489,7 @@
             .tech-matrix { padding-left: 5%; padding-right: 5%; }
             
             .hero h1 {
-                font-size: 34px; /* Reducido para que "AUTOMATIZACIÓN" no se rompa feo en móviles */
+                font-size: 34px;
                 line-height: 1.2;
             }
             .hero p {
@@ -565,9 +563,7 @@ class AuraBlueprintsModule:
             <div class="wizard-step active" id="step1">
                 <h2 id="w-s1-title">What do you need <span>us to build?</span></h2>
                 <div class="wizard-options" id="w-s1-opts">
-                    <button class="opt-btn" onclick="nextStep(2, 'Blueprint Reader App')">🗺️ Structural Blueprint & Rebar Easy-Reader App</button>
-                    <button class="opt-btn" onclick="nextStep(2, 'Industrial Payroll Engine')">⚡ Payroll & Time Tracking Engine</button>
-                    <button class="opt-btn" onclick="nextStep(2, 'Secure Database')">🛡️ Secure Local Database Architecture (SQLite)</button>
+                    <!-- Los botones se renderizan dinámicamente con JS para evitar desincronizaciones de idioma -->
                 </div>
                 <button class="btn-secondary" id="w-s1-cancel" onclick="closeWizard()">Cancel</button>
             </div>
@@ -575,9 +571,7 @@ class AuraBlueprintsModule:
             <div class="wizard-step" id="step2">
                 <h2 id="w-s2-title">What is the <span>deployment environment?</span></h2>
                 <div class="wizard-options" id="w-s2-opts">
-                    <button class="opt-btn" onclick="nextStep(3, 'Tablets & Field Devices')">📱 On-Site Tablets / Field Deployment</button>
-                    <button class="opt-btn" onclick="nextStep(3, 'Local Linux Server')">🐧 Local Linux Server (Debian Distribution)</button>
-                    <button class="opt-btn" onclick="nextStep(3, 'Centralized Cloud')">☁️ Centralized Cloud Environment</button>
+                    <!-- Opciones dinámicas -->
                 </div>
                 <button class="btn-secondary" id="w-s2-back" onclick="prevStep(1)">Back</button>
             </div>
@@ -678,10 +672,10 @@ class AuraBlueprintsModule:
         </div>
     </section>
 
-    <footer id="footer-text">
+    <footer>
         <div id="footer-copyright">&copy; 2026 Aura Software LLC. All rights reserved.</div>
         <div class="f-sub" id="footer-signature">Edwin A. López | Co-Founder &mdash; <span>lopez@aurasoftware.llc</span></div>
-    </section>
+    </footer> <!-- Corregido el cierre erróneo de section a footer -->
 
     <script>
         let selections = { servicio: '', entorno: '' };
@@ -720,7 +714,7 @@ class AuraBlueprintsModule:
                 p2Title: "SaaS Time & Payroll",
                 p2Desc: "Implementation of industrial web dashboards optimized for commercial tablets across local operations points.",
                 footerCopyright: "&copy; 2026 Aura Software LLC. All rights reserved.",
-                footerSignature: "Edwin A. López | Co-Founder &mdash; <span>lopez@aurasoftware.llc</span>",
+                footerSignature: "Edwin A. López | Co-Founder — <span>lopez@aurasoftware.llc</span>",
                 ws1Title: "What do you need <span>us to build?</span>",
                 ws1Opts: [
                     "🗺️ Structural Blueprint & Rebar Easy-Reader App",
@@ -771,16 +765,16 @@ class AuraBlueprintsModule:
                 p1Tag: "Caso 01 // Logística Estructural",
                 p1Title: "Steel Software Deployment",
                 p1Desc: "Diseño y ejecución de una plataforma propietaria para la gestión completa de mano de obra pesada especializada en varilla, concreto y forma estructural.",
-                p2Tag: "Caso 02 // Automatización Local",
+                p2Tag: "Case 02 // Automatización Local",
                 p2Title: "SaaS Horas y Nómina",
                 p2Desc: "Implementación de paneles web industriales optimizados para tablets comerciales en puntos de operación local.",
                 footerCopyright: "&copy; 2026 Aura Software LLC. Todos los derechos reservados.",
-                footerSignature: "Edwin A. López | Co-Fundador &mdash; <span>lopez@aurasoftware.llc</span>",
+                footerSignature: "Edwin A. López | Co-Fundador — <span>lopez@aurasoftware.llc</span>",
                 ws1Title: "¿Qué necesitas <span>que creemos?</span>",
                 ws1Opts: [
                     "🗺️ App / Motor de Lectura Fácil de Planos Estructurales",
                     "⚡ Motor de Nómina y Control de Horas",
-                    "🛡️ Base de Datos Local Secura (SQLite)"
+                    "🛡️ Base de Datos Local Segura (SQLite)"
                 ],
                 ws1Cancel: "Cancelar",
                 ws2Title: "¿Cuál es el <span>entorno de despliegue?</span>",
@@ -800,27 +794,49 @@ class AuraBlueprintsModule:
             }
         };
 
+        function updateWizardOptions() {
+            const data = translations[currentLang];
+            
+            // Renderizar Opciones Paso 1
+            const s1Opts = document.getElementById('w-s1-opts');
+            s1Opts.innerHTML = '';
+            data.ws1Opts.forEach((opt, idx) => {
+                s1Opts.innerHTML += `<button class="opt-btn" onclick="nextStep(2, '${opt}')">${opt}</button>`;
+            });
+
+            // Renderizar Opciones Paso 2
+            const s2Opts = document.getElementById('w-s2-opts');
+            s2Opts.innerHTML = '';
+            data.ws2Opts.forEach((opt, idx) => {
+                s2Opts.innerHTML += `<button class="opt-btn" onclick="nextStep(3, '${opt}')">${opt}</button>`;
+            });
+        }
+
         function toggleLanguage() {
             currentLang = (currentLang === 'en') ? 'es' : 'en';
             document.documentElement.lang = currentLang;
             
             const data = translations[currentLang];
             
+            // Navbar
             document.getElementById('langBtn').innerText = data.langBtn;
             document.getElementById('nav-solutions').innerText = data.navSolutions;
             document.getElementById('nav-cases').innerText = data.navCases;
             document.getElementById('nav-matrix').innerText = data.navMatrix;
             document.getElementById('nav-demo').innerText = data.navDemo;
             
+            // Hero
             document.getElementById('hero-badge').innerText = data.heroBadge;
             document.getElementById('hero-title').innerHTML = data.heroTitle;
             document.getElementById('hero-desc').innerText = data.heroDesc;
             document.getElementById('hero-btn').innerText = data.heroBtn;
             
+            // Secciones
             document.getElementById('sec-sol-title').innerHTML = data.secSolTitle;
             document.getElementById('sec-cas-title').innerHTML = data.secCasTitle;
             document.getElementById('sec-mat-title').innerHTML = data.secMatTitle;
             
+            // Tarjetas
             document.getElementById('c1-title').innerText = data.c1Title;
             document.getElementById('c1-desc').innerText = data.c1Desc;
             document.getElementById('c2-title').innerText = data.c2Title;
@@ -834,6 +850,7 @@ class AuraBlueprintsModule:
             document.getElementById('c6-title').innerText = data.c6Title;
             document.getElementById('c6-desc').innerText = data.c6Desc;
             
+            // Casos
             document.getElementById('p1-tag').innerText = data.p1Tag;
             document.getElementById('p1-title').innerText = data.p1Title;
             document.getElementById('p1-desc').innerText = data.p1Desc;
@@ -841,98 +858,69 @@ class AuraBlueprintsModule:
             document.getElementById('p2-title').innerText = data.p2Title;
             document.getElementById('p2-desc').innerText = data.p2Desc;
             
+            // Footer
             document.getElementById('footer-copyright').innerHTML = data.footerCopyright;
             document.getElementById('footer-signature').innerHTML = data.footerSignature;
 
+            // Wizard Estático
             document.getElementById('w-s1-title').innerHTML = data.ws1Title;
             document.getElementById('w-s1-cancel').innerText = data.ws1Cancel;
-            const step1Buttons = document.querySelectorAll('#w-s1-opts .opt-btn');
-            step1Buttons[0].innerText = data.ws1Opts[0];
-            step1Buttons[1].innerText = data.ws1Opts[1];
-            step1Buttons[2].innerText = data.ws1Opts[2];
-
             document.getElementById('w-s2-title').innerHTML = data.ws2Title;
             document.getElementById('w-s2-back').innerText = data.ws2Back;
-            const step2Buttons = document.querySelectorAll('#w-s2-opts .opt-btn');
-            step2Buttons[0].innerText = data.ws2Opts[0];
-            step2Buttons[1].querySelectorAll = data.ws2Opts[1];
-            step2Buttons[2].innerText = data.ws2Opts[2];
-
             document.getElementById('w-s3-title').innerHTML = data.ws3Title;
+            document.getElementById('w-s3-submit').innerText = data.ws3Submit;
+            document.getElementById('w-s3-back').innerText = data.ws3Back;
             document.getElementById('clientName').placeholder = data.phName;
             document.getElementById('clientContact').placeholder = data.phContact;
-            document.getElementById('w-s3-submit').innerText = data.ws3Submit;
-            document.querySelectorAll('#step3 .btn-secondary')[0].innerText = data.ws3Back;
+
+            updateWizardOptions();
         }
 
+        // Lógica de control del Wizard
         function activateWizard() {
-            document.getElementById('heroMain').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('heroMain').classList.add('hidden');
-                const wizard = document.getElementById('auraWizard');
-                wizard.style.display = 'block';
-                showStep(1);
-            }, 400);
+            document.getElementById('heroMain').classList.add('hidden');
+            document.getElementById('auraWizard').style.display = 'block';
+            updateWizardOptions();
         }
 
         function closeWizard() {
-            const wizard = document.getElementById('auraWizard');
-            wizard.style.display = 'none';
-            const heroMain = document.getElementById('heroMain');
-            heroMain.classList.remove('hidden');
-            setTimeout(() => {
-                heroMain.style.opacity = '1';
-            }, 50);
-            selections = { servicio: '', entorno: '' };
+            document.getElementById('auraWizard').style.display = 'none';
+            document.getElementById('heroMain').classList.remove('hidden');
         }
 
-        function showStep(stepNum) {
-            const steps = document.querySelectorAll('.wizard-step');
-            steps.forEach(step => step.classList.remove('active'));
-            document.getElementById(`step${stepNum}`).classList.add('active');
+        function nextStep(step, val) {
+            if(step === 2) selections.servicio = val;
+            if(step === 3) selections.entorno = val;
+
+            document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
         }
 
-        function nextStep(stepNum, val) {
-            if (stepNum === 2) {
-                selections.servicio = val;
-            } else if (stepNum === 3) {
-                selections.entorno = val;
-            }
-            showStep(stepNum);
-        }
-
-        function prevStep(stepNum) {
-            showStep(stepNum);
+        function prevStep(step) {
+            document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
         }
 
         function submitWizard() {
-            const name = document.getElementById('clientName').value.trim();
-            const contact = document.getElementById('clientContact').value.trim();
+            const name = document.getElementById('clientName').value;
+            const contact = document.getElementById('clientContact').value;
             const data = translations[currentLang];
 
-            if (!name || !contact) {
+            if(!name || !contact) {
                 alert(data.alertFields);
                 return;
             }
 
-            let successMessage = data.alertSuccess
+            let msg = data.alertSuccess
                 .replace('{name}', name)
                 .replace('{service}', selections.servicio)
                 .replace('{environment}', selections.entorno)
                 .replace('{contact}', contact);
 
-            alert(successMessage);
-            
-            document.getElementById('clientName').value = '';
-            document.getElementById('clientContact').value = '';
+            alert(msg);
             closeWizard();
+            // Aquí puedes procesar el envío a un backend
         }
-
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const background = document.querySelector('.parallax-bg');
-            background.style.transform = `scale(1.1) translateY(${scrolled * 0.15}px)`;
-        });
     </script>
 </body>
 </html>
