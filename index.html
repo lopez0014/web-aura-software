@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Software | Industrial Automation</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #050507;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* EFECTO PARALLAX CON TU IMAGEN PROPIA */
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(5, 5, 7, 0.88), rgba(5, 5, 7, 0.88)),
+                url('fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -3;
+            transform: scale(1.1); 
+            transition: transform 0.1s ease-out;
+        }
+
+        /* MATRIZ DE CÓDIGO - TEXTURA AMBIENTAL */
+        .code-matrix-overlay {
+            position: absolute;
+            top: 0;
+            left: 5%;
+            width: 90%;
+            height: 450%;
+            font-family: monospace;
+            font-size: 11px;
+            color: rgba(255, 85, 0, 0.015);
+            padding: 20px;
+            white-space: pre;
+            pointer-events: none;
+            z-index: -2;
+            line-height: 1.8;
+            filter: blur(1.5px);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            border-bottom: 1px solid rgba(255, 85, 0, 0.1);
+            background: rgba(5, 5, 7, 0.9);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            white-space: nowrap; /* Evita que el logo se rompa en dos líneas en celular */
+        }
+
+        .logo span {
+            color: #ff5500;
+            text-shadow: 0 0 15px rgba(255, 85, 0, 0.4);
+        }
+
+        .menu-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .menu-links a {
+            color: #8c8c96;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .menu-links a:hover {
+            color: #ff5500;
+        }
+
+        .btn-demo {
+            border: 1px solid #ff5500;
+            background: rgba(255, 85, 0, 0.05);
+            color: #ff5500;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-demo:hover {
+            background: #ff5500;
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(255, 85, 0, 0.4);
+        }
+
+        .btn-lang {
+            background: #111116;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ff5500;
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            letter-spacing: 1px;
+        }
+
+        .btn-lang:hover {
+            border-color: #ff5500;
+            background: rgba(255, 85, 0, 0.05);
+            box-shadow: 0 0 10px rgba(255, 85, 0, 0.2);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 10% 100px 10%;
+            min-height: 85vh;
+            position: relative;
+        }
+
+        .hero-main-content {
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            width: 100%;
+        }
+
+        .hero-main-content.hidden {
+            display: none;
+        }
+
+        .badge {
+            background: rgba(255, 85, 0, 0.08);
+            border: 1px solid rgba(255, 85, 0, 0.3);
+            color: #ff5500;
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1.05;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            word-wrap: break-word; /* Protege contra desbordes en móviles */
+        }
+
+        .hero h1 span {
+            color: #ff5500;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #8c8c96;
+            max-width: 700px;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            background: #ff5500;
+            color: #ffffff;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 5px 25px rgba(255, 85, 0, 0.35);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        /* WIZARD INTERACTIVO CON FONDO NUEVO */
+        .wizard-container {
+            display: none;
+            /* Aplicando fondo1.jpg con filtro oscuro */
+            background-image: 
+                linear-gradient(rgba(13, 13, 19, 0.94), rgba(13, 13, 19, 0.94)),
+                url('fondo1.jpg');
+            background-size: cover;
+            background-position: center;
+            border: 1px solid rgba(255, 85, 0, 0.3);
+            border-radius: 6px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+            text-align: left;
+            animation: fadeIn 0.4s ease forwards;
+            overflow: hidden;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .wizard-step {
+            display: none;
+        }
+
+        .wizard-step.active {
+            display: block;
+        }
+
+        .wizard-container h2 {
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .wizard-container h2 span {
+            color: #ff5500;
+        }
+
+        .wizard-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .opt-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            padding: 15px 20px;
+            border-radius: 4px;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .opt-btn:hover {
+            border-color: #ff5500;
+            background: rgba(255, 85, 0, 0.06);
+            padding-left: 25px;
+        }
+
+        .wizard-input {
+            width: 100%;
+            background: #050507;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 14px;
+            color: #ffffff;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .wizard-input:focus {
+            border-color: #ff5500;
+            outline: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #8c8c96;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* GRID SECCIONES GENERALES */
+        .section-header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 100px 10% 40px 10%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            margin-bottom: 40px;
+        }
+
+        .section-title-left {
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title-left span {
+            color: #ff5500;
+        }
+
+        .ceo-signature-badge {
+            font-family: monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: #ff5500;
+            border: 1px solid rgba(255, 85, 0, 0.4);
+            background: rgba(255, 85, 0, 0.05);
+            padding: 8px 16px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajustado ancho mínimo para mejor cuadre */
+            gap: 25px;
+            padding: 0 10% 40px 10%;
+        }
+
+        .card {
+            background: rgba(13, 13, 17, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 35px 30px;
+            border-radius: 6px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(255, 85, 0, 0.4);
+            background: #111116;
+            transform: translateY(-4px);
+        }
+
+        .card-num {
+            font-size: 14px;
+            font-family: monospace;
+            color: #ff5500;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .card p {
+            color: #7c7c85;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+
+        .portfolio-section {
+            padding: 0 10% 60px 10%;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .portfolio-box {
+            background: rgba(18, 18, 24, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+            padding: 45px;
+        }
+
+        .portfolio-content h3 {
+            font-size: 24px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-content .p-tag {
+            color: #ff5500;
+            font-family: monospace;
+            font-weight: 700;
+            font-size: 12px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .portfolio-content p {
+            color: #8c8c96;
+            font-size: 14px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .tech-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 0 10% 60px 10%;
+        }
+
+        .tech-item {
+            background: rgba(10, 10, 14, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 4px;
+            padding: 25px;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        .tech-item .t-icon {
+            font-size: 24px;
+            color: #ff5500;
+            margin-bottom: 10px;
+        }
+
+        .tech-item .t-name {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 10%;
+            font-size: 11px;
+            color: #44444a;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            line-height: 2;
+        }
+
+        footer .f-sub {
+            color: #8c8c96;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        footer .f-sub span {
+            color: #ff5500;
+        }
+
+        /* 📱 RESPONSIVE ENGINE (REGLAS PARA TELÉFONOS Y TABLETS) */
+        @media (max-width: 900px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+            header { padding: 15px 5%; }
+            .menu-links { gap: 15px; }
+            .section-header-container { flex-direction: column; align-items: flex-start; gap: 15px; padding-left: 5%; padding-right: 5%; }
+            .grid-services { padding-left: 5%; padding-right: 5%; }
+            .portfolio-section { padding-left: 5%; padding-right: 5%; }
+            .tech-matrix { padding-left: 5%; padding-right: 5%; }
+            
+            .hero h1 {
+                font-size: 34px; /* Reducido para que "AUTOMATIZACIÓN" no se rompa feo en móviles */
+                line-height: 1.2;
+            }
+            .hero p {
+                font-size: 15px;
+            }
+            .wizard-container {
+                padding: 25px 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding-bottom: 15px;
+            }
+            .menu-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+            .menu-links a {
+                font-size: 11px;
+            }
+            .btn-demo {
+                padding: 8px 14px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="parallax-bg"></div>
+    
+    <div class="code-matrix-overlay">
+import sqlite3
+from datetime import datetime
+
+class AuraBlueprintsModule:
+    def __init__(self):
+        self.module = "DIGITAL_BLUEPRINT_READER"
+        self.status = "OPTIMIZED"
+
+    def scale_vector_plan(self, pdf_layer):
+        print("[DATA] LECTURA DE PLANOS: VARILLA Y CONCRETO")
+        return "RENDER_SUCCESS"
+    </div>
+
+    <header>
+        <div class="logo">Aura<span>Software</span></div>
+        <div class="menu-links">
+            <a href="#soluciones" id="nav-solutions">Solutions</a>
+            <a href="#casos" id="nav-cases">Cases</a>
+            <a href="#tecnologias" id="nav-matrix">Matrix</a>
+            <button class="btn-demo" id="nav-demo" onclick="activateWizard()">Schedule Demo</button>
+            <button class="btn-lang" id="langBtn" onclick="toggleLanguage()">ES</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-main-content" id="heroMain">
+            <div class="badge" id="hero-badge">Industrial Automation Operating Systems</div>
+            <h1 id="hero-title">Absolute Automation <span>For Real Businesses</span></h1>
+            <p id="hero-desc">We destroy operational inefficiency. We design, structure, and implement advanced software engines, secure local databases, and automated management systems tailored to your commercial infrastructure.</p>
+            <button class="btn" id="hero-btn" onclick="activateWizard()">Start Project</button>
+        </div>
+
+        <div class="wizard-container" id="auraWizard">
+            <div class="wizard-step active" id="step1">
+                <h2 id="w-s1-title">What do you need <span>us to build?</span></h2>
+                <div class="wizard-options" id="w-s1-opts">
+                    <button class="opt-btn" onclick="nextStep(2, 'Blueprint Reader App')">🗺️ Structural Blueprint & Rebar Easy-Reader App</button>
+                    <button class="opt-btn" onclick="nextStep(2, 'Industrial Payroll Engine')">⚡ Payroll & Time Tracking Engine</button>
+                    <button class="opt-btn" onclick="nextStep(2, 'Secure Database')">🛡️ Secure Local Database Architecture (SQLite)</button>
+                </div>
+                <button class="btn-secondary" id="w-s1-cancel" onclick="closeWizard()">Cancel</button>
+            </div>
+
+            <div class="wizard-step" id="step2">
+                <h2 id="w-s2-title">What is the <span>deployment environment?</span></h2>
+                <div class="wizard-options" id="w-s2-opts">
+                    <button class="opt-btn" onclick="nextStep(3, 'Tablets & Field Devices')">📱 On-Site Tablets / Field Deployment</button>
+                    <button class="opt-btn" onclick="nextStep(3, 'Local Linux Server')">🐧 Local Linux Server (Debian Distribution)</button>
+                    <button class="opt-btn" onclick="nextStep(3, 'Centralized Cloud')">☁️ Centralized Cloud Environment</button>
+                </div>
+                <button class="btn-secondary" id="w-s2-back" onclick="prevStep(1)">Back</button>
+            </div>
+
+            <div class="wizard-step" id="step3">
+                <h2 id="w-s3-title">Configure <span>Final Link</span></h2>
+                <input type="text" class="wizard-input" id="clientName" placeholder="Your Name / Company" required>
+                <input type="tel" class="wizard-input" id="clientContact" placeholder="Contact Phone or Email" required>
+                <div style="margin-top: 15px;">
+                    <button class="btn" style="width: 100%;" id="w-s3-submit" onclick="submitWizard()">Initialize Connection</button>
+                </div>
+                <button class="btn-secondary" style="margin-top: 15px;" id="w-s3-back" onclick="prevStep(2)">Back</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-header-container" id="soluciones">
+        <div class="section-title-left" id="sec-sol-title">Our <span>Lines of Code</span></div>
+    </div>
+    
+    <section class="grid-services">
+        <div class="card">
+            <div class="card-num">// MODULE_01</div>
+            <h3 id="c1-title">Blueprint Reading</h3>
+            <p id="c1-desc">Tailor-made applications designed specifically to simplify the reading and interpretation of complex structural blueprints directly on field tablets, accelerating rebar and concrete placement.</p>
+        </div>
+        <div class="card">
+            <div class="card-num">// MODULE_02</div>
+            <h3 id="c2-title">Time Tracking</h3>
+            <p id="c2-desc">Optimized infrastructure for exact attendance calculation, shift auditing, and industrial payroll management in record time.</p>
+        </div>
+        <div class="card">
+            <div class="card-num">// MODULE_03</div>
+            <h3 id="c3-title">Databases</h3>
+            <p id="c3-desc">High-speed local storage structures utilizing clean, indestructible SQLite engines optimized for secure, offline environments.</p>
+        </div>
+        <div class="card">
+            <div class="card-num">// MODULE_04</div>
+            <h3 id="c4-title">SaaS Deployment</h3>
+            <p id="c4-desc">Network applications designed with minimal dark interfaces, engineered natively to run on local Debian Linux or Chromebook environments.</p>
+        </div>
+        <div class="card">
+            <div class="card-num">// MODULE_05</div>
+            <h3 id="c5-title">Academic Portals</h3>
+            <p id="c5-desc">Customized educational systems designed to handle complete enrollment, student tracking, classes, and administrative management for academies and schools.</p>
+        </div>
+        <div class="card">
+            <div class="card-num">// MODULE_06</div>
+            <h3 id="c6-title">Fair Delivery</h3>
+            <p id="c6-desc">Independent logistical web engines connecting directly with secure delivery drivers, designed to bypass the abusive 30% marketplace commissions and maximize restaurant margins.</p>
+        </div>
+    </section>
+
+    <div class="section-header-container" id="casos">
+        <div class="section-title-left" id="sec-cas-title">Deployed <span>Success Stories</span></div>
+        <div class="ceo-signature-badge">Edwin A. López | CEO Aura Software</div>
+    </div>
+
+    <section class="portfolio-section">
+        <div class="portfolio-grid">
+            <div class="portfolio-box">
+                <div class="portfolio-content">
+                    <div class="p-tag" id="p1-tag">Case 01 // Structural Logistics</div>
+                    <h3 id="p1-title">Steel Software Deployment</h3>
+                    <p id="p1-desc">Design and execution of a proprietary platform for comprehensive management of heavy labor specialized in rebar, concrete, and structural formwork.</p>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <div class="portfolio-content">
+                    <div class="p-tag" id="p2-tag">Case 02 // Local Automation</div>
+                    <h3 id="p2-title">SaaS Time & Payroll</h3>
+                    <p id="p2-desc">Implementation of industrial web dashboards optimized for commercial tablets across local operations points.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-header-container" id="tecnologias">
+        <div class="section-title-left" id="sec-mat-title">Our <span>Tech Matrix</span></div>
+    </div>
+
+    <section class="tech-matrix">
+        <div class="tech-item">
+            <div class="t-icon">🐧</div>
+            <div class="t-name">Debian Linux</div>
+        </div>
+        <div class="tech-item">
+            <div class="t-icon">🐍</div>
+            <div class="t-name">Python Engine</div>
+        </div>
+        <div class="tech-item">
+            <div class="t-icon">🗄️</div>
+            <div class="t-name">SQLite Secure</div>
+        </div>
+        <div class="tech-item">
+            <div class="t-icon">💳</div>
+            <div class="t-name">Stripe Gateway</div>
+        </div>
+    </section>
+
+    <footer id="footer-text">
+        <div id="footer-copyright">&copy; 2026 Aura Software LLC. All rights reserved.</div>
+        <div class="f-sub" id="footer-signature">Edwin A. López | Co-Founder &mdash; <span>lopez@aurasoftware.llc</span></div>
+    </section>
+
+    <script>
+        let selections = { servicio: '', entorno: '' };
+        let currentLang = 'en';
+
+        const translations = {
+            en: {
+                langBtn: "ES",
+                navSolutions: "Solutions",
+                navCases: "Cases",
+                navMatrix: "Matrix",
+                navDemo: "Schedule Demo",
+                heroBadge: "Industrial Automation Operating Systems",
+                heroTitle: "Absolute Automation <span>For Real Businesses</span>",
+                heroDesc: "We destroy operational inefficiency. We design, structure, and implement advanced software engines, secure local databases, and automated management systems tailored to your commercial infrastructure.",
+                heroBtn: "Start Project",
+                secSolTitle: "Our <span>Lines of Code</span>",
+                secCasTitle: "Deployed <span>Success Stories</span>",
+                secMatTitle: "Our <span>Tech Matrix</span>",
+                c1Title: "Blueprint Reading",
+                c1Desc: "Tailor-made applications designed specifically to simplify the reading and interpretation of complex structural blueprints directly on field tablets, accelerating rebar and concrete placement.",
+                c2Title: "Time Tracking",
+                c2Desc: "Optimized infrastructure for exact attendance calculation, shift auditing, and industrial payroll management in record time.",
+                c3Title: "Databases",
+                c3Desc: "High-speed local storage structures utilizing clean, indestructible SQLite engines optimized for secure, offline environments.",
+                c4Title: "SaaS Deployment",
+                c4Desc: "Network applications designed with minimal dark interfaces, engineered natively to run on local Debian Linux or Chromebook environments.",
+                c5Title: "Academic Portals",
+                c5Desc: "Customized educational systems designed to handle complete enrollment, student tracking, classes, and administrative management for academies and schools.",
+                c6Title: "Fair Delivery",
+                c6Desc: "Independent logistical web engines connecting directly with secure delivery drivers, designed to bypass the abusive 30% marketplace commissions and maximize restaurant margins.",
+                p1Tag: "Case 01 // Structural Logistics",
+                p1Title: "Steel Software Deployment",
+                p1Desc: "Design and execution of a proprietary platform for comprehensive management of heavy labor specialized in rebar, concrete, and structural formwork.",
+                p2Tag: "Case 02 // Local Automation",
+                p2Title: "SaaS Time & Payroll",
+                p2Desc: "Implementation of industrial web dashboards optimized for commercial tablets across local operations points.",
+                footerCopyright: "&copy; 2026 Aura Software LLC. All rights reserved.",
+                footerSignature: "Edwin A. López | Co-Founder &mdash; <span>lopez@aurasoftware.llc</span>",
+                ws1Title: "What do you need <span>us to build?</span>",
+                ws1Opts: [
+                    "🗺️ Structural Blueprint & Rebar Easy-Reader App",
+                    "⚡ Payroll & Time Tracking Engine",
+                    "🛡️ Secure Local Database Architecture (SQLite)"
+                ],
+                ws1Cancel: "Cancel",
+                ws2Title: "What is the <span>deployment environment?</span>",
+                ws2Opts: [
+                    "📱 On-Site Tablets / Field Deployment",
+                    "🐧 Local Linux Server (Debian Distribution)",
+                    "☁️ Centralized Cloud Environment"
+                ],
+                ws2Back: "Back",
+                ws3Title: "Configure <span>Final Link</span>",
+                ws3Submit: "Initialize Connection",
+                ws3Back: "Back",
+                phName: "Your Name / Company",
+                phContact: "Contact Phone or Email",
+                alertFields: "Please complete the link fields.",
+                alertSuccess: "[AURA CORE CONNECTED]\n\nThank you {name}.\nWe have received your requirements:\n• Solution: {service}\n• Environment: {environment}\n• Contact: {contact}\n\nEdwin A. López's core execution team will link up immediately."
+            },
+            es: {
+                langBtn: "EN",
+                navSolutions: "Soluciones",
+                navCases: "Casos",
+                navMatrix: "Matriz",
+                navDemo: "Agendar Demostración",
+                heroBadge: "Sistemas Operativos de Automatización Industrial",
+                heroTitle: "Automatización Absoluta <span>Para Empresas Reales</span>",
+                heroDesc: "Destruimos la ineficiencia operativa. Diseñamos, estructuramos e implementamos motores de software avanzados, bases de datos blindadas locales y sistemas de gestión automatizados a la medida de tu infraestructura comercial.",
+                heroBtn: "Iniciar Proyecto",
+                secSolTitle: "Nuestras <span>Líneas de Código</span>",
+                secCasTitle: "Casos de <span>Éxito Desplegados</span>",
+                secMatTitle: "Nuestra <span>Matriz Tecnológica</span>",
+                c1Title: "Lectura de Planos",
+                c1Desc: "Aplicaciones a medida diseñadas específicamente para simplificar la lectura e interpretación de planos estructurales complejos directamente en tablets de campo, agilizando la colocación de varilla y concreto.",
+                c2Title: "Sistemas de Horas",
+                c2Desc: "Infraestructura optimizada para el cálculo exacto de asistencias, auditoría de turnos y control de nómina industrial en tiempo récord.",
+                c3Title: "Bases de Datos",
+                c3Desc: "Estructuras de almacenamiento local de alta velocidad utilizando motores SQLite limpios, indestructibles y optimizados para entornos seguros.",
+                c4Title: "Despliegue SaaS",
+                c4Desc: "Aplicaciones en red diseñadas con interfaces oscuras minimalistas listas para correr en entornos Linux Debian o Chromebooks locales.",
+                c5Title: "Portales Académicos",
+                c5Desc: "Sistemas educativos a medida diseñados para controlar matrículas completas, seguimiento de alumnos, asignaturas y gestión administrativa para academias y escuelas.",
+                c6Title: "Delivery Justo",
+                c6Desc: "Motores web independientes de logística con conexión directa a repartidores, creados para saltarse las comisiones abusivas del 30% de las plataformas tradicionales y proteger el margen del restaurante.",
+                p1Tag: "Caso 01 // Logística Estructural",
+                p1Title: "Steel Software Deployment",
+                p1Desc: "Diseño y ejecución de una plataforma propietaria para la gestión completa de mano de obra pesada especializada en varilla, concreto y forma estructural.",
+                p2Tag: "Caso 02 // Automatización Local",
+                p2Title: "SaaS Horas y Nómina",
+                p2Desc: "Implementación de paneles web industriales optimizados para tablets comerciales en puntos de operación local.",
+                footerCopyright: "&copy; 2026 Aura Software LLC. Todos los derechos reservados.",
+                footerSignature: "Edwin A. López | Co-Fundador &mdash; <span>lopez@aurasoftware.llc</span>",
+                ws1Title: "¿Qué necesitas <span>que creemos?</span>",
+                ws1Opts: [
+                    "🗺️ App / Motor de Lectura Fácil de Planos Estructurales",
+                    "⚡ Motor de Nómina y Control de Horas",
+                    "🛡️ Base de Datos Local Secura (SQLite)"
+                ],
+                ws1Cancel: "Cancelar",
+                ws2Title: "¿Cuál es el <span>entorno de despliegue?</span>",
+                ws2Opts: [
+                    "📱 Tablets / Dispositivos en el Área de Trabajo (Campo)",
+                    "🐧 Servidor Local Linux (Debian)",
+                    "☁️ Entorno Cloud Centralizado"
+                ],
+                ws2Back: "Atrás",
+                ws3Title: "Configurar <span>Enlace Final</span>",
+                ws3Submit: "Inicializar Conexión",
+                ws3Back: "Atrás",
+                phName: "Tu Nombre / Empresa",
+                phContact: "Teléfono de Contacto o Email",
+                alertFields: "Por favor completa los campos de enlace.",
+                alertSuccess: "[AURA CORE CONNECTED]\n\nGracias {name}.\nHemos recibido tu requerimiento:\n• Solución: {service}\n• Entorno: {environment}\n• Contacto: {contact}\n\nEl equipo de Edwin A. López se comunicará de inmediato."
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = (currentLang === 'en') ? 'es' : 'en';
+            document.documentElement.lang = currentLang;
+            
+            const data = translations[currentLang];
+            
+            document.getElementById('langBtn').innerText = data.langBtn;
+            document.getElementById('nav-solutions').innerText = data.navSolutions;
+            document.getElementById('nav-cases').innerText = data.navCases;
+            document.getElementById('nav-matrix').innerText = data.navMatrix;
+            document.getElementById('nav-demo').innerText = data.navDemo;
+            
+            document.getElementById('hero-badge').innerText = data.heroBadge;
+            document.getElementById('hero-title').innerHTML = data.heroTitle;
+            document.getElementById('hero-desc').innerText = data.heroDesc;
+            document.getElementById('hero-btn').innerText = data.heroBtn;
+            
+            document.getElementById('sec-sol-title').innerHTML = data.secSolTitle;
+            document.getElementById('sec-cas-title').innerHTML = data.secCasTitle;
+            document.getElementById('sec-mat-title').innerHTML = data.secMatTitle;
+            
+            document.getElementById('c1-title').innerText = data.c1Title;
+            document.getElementById('c1-desc').innerText = data.c1Desc;
+            document.getElementById('c2-title').innerText = data.c2Title;
+            document.getElementById('c2-desc').innerText = data.c2Desc;
+            document.getElementById('c3-title').innerText = data.c3Title;
+            document.getElementById('c3-desc').innerText = data.c3Desc;
+            document.getElementById('c4-title').innerText = data.c4Title;
+            document.getElementById('c4-desc').innerText = data.c4Desc;
+            document.getElementById('c5-title').innerText = data.c5Title;
+            document.getElementById('c5-desc').innerText = data.c5Desc;
+            document.getElementById('c6-title').innerText = data.c6Title;
+            document.getElementById('c6-desc').innerText = data.c6Desc;
+            
+            document.getElementById('p1-tag').innerText = data.p1Tag;
+            document.getElementById('p1-title').innerText = data.p1Title;
+            document.getElementById('p1-desc').innerText = data.p1Desc;
+            document.getElementById('p2-tag').innerText = data.p2Tag;
+            document.getElementById('p2-title').innerText = data.p2Title;
+            document.getElementById('p2-desc').innerText = data.p2Desc;
+            
+            document.getElementById('footer-copyright').innerHTML = data.footerCopyright;
+            document.getElementById('footer-signature').innerHTML = data.footerSignature;
+
+            document.getElementById('w-s1-title').innerHTML = data.ws1Title;
+            document.getElementById('w-s1-cancel').innerText = data.ws1Cancel;
+            const step1Buttons = document.querySelectorAll('#w-s1-opts .opt-btn');
+            step1Buttons[0].innerText = data.ws1Opts[0];
+            step1Buttons[1].innerText = data.ws1Opts[1];
+            step1Buttons[2].innerText = data.ws1Opts[2];
+
+            document.getElementById('w-s2-title').innerHTML = data.ws2Title;
+            document.getElementById('w-s2-back').innerText = data.ws2Back;
+            const step2Buttons = document.querySelectorAll('#w-s2-opts .opt-btn');
+            step2Buttons[0].innerText = data.ws2Opts[0];
+            step2Buttons[1].querySelectorAll = data.ws2Opts[1];
+            step2Buttons[2].innerText = data.ws2Opts[2];
+
+            document.getElementById('w-s3-title').innerHTML = data.ws3Title;
+            document.getElementById('clientName').placeholder = data.phName;
+            document.getElementById('clientContact').placeholder = data.phContact;
+            document.getElementById('w-s3-submit').innerText = data.ws3Submit;
+            document.querySelectorAll('#step3 .btn-secondary')[0].innerText = data.ws3Back;
+        }
+
+        function activateWizard() {
+            document.getElementById('heroMain').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('heroMain').classList.add('hidden');
+                const wizard = document.getElementById('auraWizard');
+                wizard.style.display = 'block';
+                showStep(1);
+            }, 400);
+        }
+
+        function closeWizard() {
+            const wizard = document.getElementById('auraWizard');
+            wizard.style.display = 'none';
+            const heroMain = document.getElementById('heroMain');
+            heroMain.classList.remove('hidden');
+            setTimeout(() => {
+                heroMain.style.opacity = '1';
+            }, 50);
+            selections = { servicio: '', entorno: '' };
+        }
+
+        function showStep(stepNum) {
+            const steps = document.querySelectorAll('.wizard-step');
+            steps.forEach(step => step.classList.remove('active'));
+            document.getElementById(`step${stepNum}`).classList.add('active');
+        }
+
+        function nextStep(stepNum, val) {
+            if (stepNum === 2) {
+                selections.servicio = val;
+            } else if (stepNum === 3) {
+                selections.entorno = val;
+            }
+            showStep(stepNum);
+        }
+
+        function prevStep(stepNum) {
+            showStep(stepNum);
+        }
+
+        function submitWizard() {
+            const name = document.getElementById('clientName').value.trim();
+            const contact = document.getElementById('clientContact').value.trim();
+            const data = translations[currentLang];
+
+            if (!name || !contact) {
+                alert(data.alertFields);
+                return;
+            }
+
+            let successMessage = data.alertSuccess
+                .replace('{name}', name)
+                .replace('{service}', selections.servicio)
+                .replace('{environment}', selections.entorno)
+                .replace('{contact}', contact);
+
+            alert(successMessage);
+            
+            document.getElementById('clientName').value = '';
+            document.getElementById('clientContact').value = '';
+            closeWizard();
+        }
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const background = document.querySelector('.parallax-bg');
+            background.style.transform = `scale(1.1) translateY(${scrolled * 0.15}px)`;
+        });
+    </script>
+</body>
+</html>
