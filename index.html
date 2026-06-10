@@ -9,235 +9,385 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Courier New', Courier, monospace, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: #020204;
+            background-color: #030308;
             color: #00f0ff;
             overflow-x: hidden;
-            line-height: 1.5;
+            line-height: 1.6;
             position: relative;
         }
 
-        /* ESCENARIO INTERACTIVO HOLOGRÁFICO */
+        /* FONDO TECNOLÓGICO DE ALTA FIDELIDAD CON IMAGEN Y MALLA DIGITAL */
         .parallax-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 50% 30%, rgba(0, 81, 255, 0.15) 0%, transparent 60%),
-                linear-gradient(rgba(2, 2, 4, 0.95), rgba(2, 2, 4, 0.98)),
-                perspective(500px) rotateX(60deg) linear-gradient(rgba(0, 240, 255, 0.03) 2px, transparent 2px),
-                perspective(500px) rotateX(60deg) linear-gradient(90deg, rgba(0, 240, 255, 0.03) 2px, transparent 2px);
-            background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+            background-image: 
+                linear-gradient(180deg, rgba(3, 3, 8, 0.8) 0%, rgba(3, 3, 8, 0.95) 100%),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+                url('https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=1920&q=80'); /* Imagen real de ingeniería de fondo */
+            background-size: 100% 100%, 50px 50px, 50px 50px, cover;
+            background-position: center;
+            background-attachment: fixed;
             z-index: -3;
-            animation: hyperDrive 12s linear infinite;
+            filter: hue-rotate(0deg);
+            animation: backgroundPulse 15s ease-in-out infinite alternate;
         }
 
-        @keyframes hyperDrive {
-            0% { background-position: 0 0, 0 0, 0 0, 0 0; }
-            100% { background-position: 0 0, 0 0, 0 30px, 30px 0; }
+        @keyframes backgroundPulse {
+            0% { background-position: center, 0 0, 0 0, center; transform: scale(1); }
+            100% { background-position: center, 25px 25px, 25px 25px, center; transform: scale(1.03); }
         }
 
-        /* TEXTURA DE MATRIZ MEJORADA */
+        /* Nodos y Nebulosa de Energía */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 20%;
+            right: -10%;
+            width: 60vw;
+            height: 60vh;
+            background: radial-gradient(circle, rgba(0, 162, 255, 0.15) 0%, transparent 70%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* TEXTURA AMBIENTAL DE CÓDIGO */
         .code-matrix-overlay {
             position: absolute;
-            top: 10%;
-            left: 2%;
-            width: 96%;
-            height: 400%;
+            top: 0;
+            left: 5%;
+            width: 90%;
+            height: 450%;
             font-family: monospace;
-            font-size: 10px;
+            font-size: 11px;
             color: rgba(0, 240, 255, 0.03);
+            padding: 20px;
             white-space: pre;
             pointer-events: none;
             z-index: -1;
-            line-height: 1.5;
+            line-height: 1.8;
+            filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.5));
         }
 
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
-            border-bottom: 2px dashed rgba(0, 240, 255, 0.3);
-            background: rgba(2, 2, 4, 0.85);
-            backdrop-filter: blur(15px);
+            padding: 20px 10%;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+            background: rgba(3, 3, 8, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .logo {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 900;
-            letter-spacing: 4px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: #ffffff;
         }
 
         .logo span {
             color: #00f0ff;
-            text-shadow: 0 0 15px #00f0ff, 0 0 30px rgba(0, 240, 255, 0.5);
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
         }
 
         .menu-links {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 30px;
         }
 
         .menu-links a {
-            color: #00a2ff;
+            color: #8da2b5;
             text-decoration: none;
-            font-size: 11px;
-            font-weight: bold;
-            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            transition: all 0.3s;
-            border: 1px solid transparent;
-            padding: 5px 10px;
+            transition: color 0.3s, text-shadow 0.3s;
         }
 
         .menu-links a:hover {
-            color: #ffffff;
-            background: rgba(0, 240, 255, 0.1);
-            border-color: #00f0ff;
-            text-shadow: 0 0 8px #00f0ff;
+            color: #00f0ff;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
         }
 
         .btn-demo {
             border: 1px solid #00f0ff;
-            background: transparent;
+            background: rgba(0, 240, 255, 0.05);
             color: #00f0ff;
-            padding: 10px 20px;
-            font-weight: bold;
-            letter-spacing: 2px;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
             text-transform: uppercase;
             cursor: pointer;
-            position: relative;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
         }
 
         .btn-demo:hover {
             background: #00f0ff;
-            color: #020204;
-            box-shadow: 0 0 20px #00f0ff;
-            transform: translateY(-2px);
+            color: #030308;
+            box-shadow: 0 0 25px #00f0ff;
+            transform: scale(1.05);
         }
 
         .btn-lang {
-            background: #00a2ff;
-            border: none;
-            color: #020204;
-            padding: 6px 12px;
-            font-weight: 900;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            color: #00f0ff;
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            font-weight: 700;
             cursor: pointer;
-            font-size: 11px;
+            transition: all 0.2s;
         }
 
-        /* HERO INTERFAZ DE COMANDO */
+        .btn-lang:hover {
+            border-color: #00f0ff;
+            background: rgba(0, 240, 255, 0.1);
+        }
+
+        /* HERO DIVIDIDO EN DOS COLUMNAS - TEXTO + TELÉFONO */
         .hero {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
             align-items: center;
-            justify-content: center;
-            padding: 100px 5%;
+            gap: 50px;
+            padding: 100px 10%;
             min-height: 85vh;
             position: relative;
         }
 
+        .hero-main-content {
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            text-align: left;
+        }
+
+        .hero-main-content.hidden {
+            display: none;
+        }
+
         .badge {
-            border: 1px double #00f0ff;
             background: rgba(0, 240, 255, 0.05);
-            color: #ffffff;
-            padding: 8px 25px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: #00f0ff;
+            padding: 8px 16px;
+            border-radius: 4px;
             font-size: 11px;
-            letter-spacing: 4px;
+            font-weight: 700;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             display: inline-block;
-            box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
         }
 
         .hero h1 {
-            font-size: 68px;
+            font-size: 56px;
             font-weight: 900;
             letter-spacing: -1px;
             line-height: 1.1;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-transform: uppercase;
             color: #ffffff;
         }
 
         .hero h1 span {
             color: #00f0ff;
-            background: linear-gradient(180deg, #ffffff, #00f0ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
         }
 
         .hero p {
-            font-size: 16px;
-            color: #00a2ff;
-            max-width: 800px;
-            margin-bottom: 45px;
-            font-family: sans-serif;
+            font-size: 17px;
+            color: #8da2b5;
+            margin-bottom: 40px;
         }
 
         .btn {
-            background: transparent;
-            color: #00f0ff;
-            padding: 20px 50px;
-            border: 2px solid #00f0ff;
-            font-size: 14px;
-            font-weight: bold;
-            letter-spacing: 3px;
+            background: #00f0ff;
+            color: #030308;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
             text-transform: uppercase;
             cursor: pointer;
+            box-shadow: 0 5px 25px rgba(0, 240, 255, 0.3);
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+            display: inline-block;
         }
 
         .btn:hover {
-            background: rgba(0, 240, 255, 0.15);
-            box-shadow: 0 0 30px #00f0ff;
-            letter-spacing: 5px;
+            background: #ffffff;
+            box-shadow: 0 5px 35px #00f0ff;
+            transform: translateY(-2px);
         }
 
-        /* CONSOLA WIZARD RE-DISEÑADA */
-        .wizard-container {
-            display: none;
-            background: #040814;
-            border: 3px solid #00f0ff;
-            padding: 40px;
-            max-width: 700px;
-            width: 100%;
-            box-shadow: 0 0 50px rgba(0, 240, 255, 0.3);
-            text-align: left;
+        /* 📱 DISPOSITIVO MÓVIL INTERACTIVO EN 3D (MOCKUP AVANZADO) */
+        .hero-phone-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative;
         }
 
-        .wizard-container::before {
-            content: 'SYS_ACTIVATION_CORE';
+        .phone-mockup {
+            width: 290px;
+            height: 580px;
+            background: #0a0e1a;
+            border: 11px solid #1d263b;
+            border-radius: 40px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 240, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+            transform: rotateY(-15deg) rotateX(10deg);
+            transition: all 0.5s ease;
+        }
+
+        .phone-mockup:hover {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.03);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 240, 255, 0.3);
+        }
+
+        /* Cámara/Isla del teléfono */
+        .phone-notch {
+            width: 120px;
+            height: 25px;
+            background: #1d263b;
             position: absolute;
-            top: -12px;
-            left: 20px;
-            background: #020204;
-            padding: 0 10px;
-            font-size: 10px;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 10;
+        }
+
+        /* Interfaz simulada de WhatsApp del Bot dentro del teléfono */
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #0b141a; /* Color oscuro real de WhatsApp */
+            padding: 35px 14px 15px 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 15px;
+        }
+
+        .phone-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 8px;
+        }
+
+        .phone-avatar {
+            width: 32px;
+            height: 32px;
+            background: #00f0ff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00f0ff;
+        }
+
+        .phone-status {
+            font-size: 11px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .phone-status span {
+            display: block;
+            font-size: 9px;
             color: #00f0ff;
-            letter-spacing: 2px;
+        }
+
+        /* Burbujas de chat animadas */
+        .chat-bubble {
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 11px;
+            line-height: 1.4;
+            animation: bubbleIntro 0.5s ease forwards;
+        }
+
+        .chat-bubble.user {
+            background: #005c4b; /* Verde WhatsApp */
+            color: #ffffff;
+            align-self: flex-end;
+            border-top-right-radius: 0;
+        }
+
+        .chat-bubble.bot {
+            background: #202c33; /* Gris WhatsApp */
+            color: #e9edef;
+            align-self: flex-start;
+            border-top-left-radius: 0;
+            border-left: 3px solid #00f0ff;
+        }
+
+        @keyframes bubbleIntro {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* WIZARD CONSOLA INTERACTIVA */
+        .wizard-container {
+            display: none;
+            background: rgba(10, 14, 26, 0.95);
+            border: 2px solid #00f0ff;
+            border-radius: 8px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 240, 255, 0.2);
+            text-align: left;
+            animation: fadeIn 0.4s ease forwards;
+            grid-column: span 2;
+            margin: 0 auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .wizard-step {
+            display: none;
+        }
+
+        .wizard-step.active {
+            display: block;
         }
 
         .wizard-container h2 {
-            font-size: 22px;
+            font-size: 24px;
+            font-weight: 800;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             color: #ffffff;
         }
 
@@ -245,45 +395,68 @@
             color: #00f0ff;
         }
 
+        .wizard-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
         .opt-btn {
-            background: transparent;
-            border: 1px dashed #00a2ff;
-            color: #00f0ff;
-            padding: 18px 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            color: #ffffff;
+            padding: 15px 20px;
+            border-radius: 4px;
             text-align: left;
-            font-size: 13px;
+            font-size: 14px;
             cursor: pointer;
             transition: all 0.2s;
         }
 
         .opt-btn:hover {
-            background: #00f0ff;
-            color: #020204;
-            font-weight: bold;
-            padding-left: 35px;
+            border-color: #00f0ff;
+            background: rgba(0, 240, 255, 0.08);
+            padding-left: 25px;
         }
 
         .wizard-input {
             width: 100%;
-            background: #020204;
-            border: 1px solid #00f0ff;
-            padding: 15px;
+            background: #030308;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            padding: 14px;
             color: #ffffff;
-            margin-bottom: 20px;
+            border-radius: 4px;
+            margin-bottom: 15px;
         }
 
-        /* SECCIONES: RE-DISEÑO COMPLETO TIPO CABINA */
+        .wizard-input:focus {
+            border-color: #00f0ff;
+            outline: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #8da2b5;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* SECCIONES Y TARJETAS CRISTALIZADAS */
         .section-header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 80px 10% 20px 10%;
-            border-bottom: 2px solid rgba(0, 240, 255, 0.2);
-            margin-bottom: 50px;
+            padding: 100px 10% 40px 10%;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+            margin-bottom: 40px;
         }
 
         .section-title-left {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 900;
             text-transform: uppercase;
             color: #ffffff;
@@ -294,148 +467,155 @@
         }
 
         .ceo-signature-badge {
-            font-size: 11px;
+            font-size: 12px;
+            font-weight: 700;
             color: #00f0ff;
             border: 1px solid #00f0ff;
+            background: rgba(0, 240, 255, 0.05);
             padding: 8px 16px;
+            border-radius: 4px;
+            text-transform: uppercase;
         }
 
-        /* SISTEMA DE PANELES MODULARES */
         .grid-services {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            padding: 0 10% 60px 10%;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 0 10% 40px 10%;
         }
 
         .card {
-            background: rgba(4, 8, 20, 0.8);
-            border-left: 5px solid #00f0ff;
-            border-right: 1px solid rgba(0, 240, 255, 0.2);
-            border-top: 1px solid rgba(0, 240, 255, 0.2);
-            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
-            padding: 35px;
+            background: rgba(10, 14, 26, 0.75);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            padding: 35px 30px;
+            border-radius: 6px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
             position: relative;
+            overflow: hidden;
         }
 
-        /* Barra de procesamiento interna simulada */
-        .card::after {
+        /* Escáner láser en tarjetas */
+        .card::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 30%;
+            top: 0;
+            left: -100%;
+            width: 100%;
             height: 2px;
-            background: #00f0ff;
-            box-shadow: 0 0 10px #00f0ff;
-            animation: dataStream 3s infinite linear;
+            background: linear-gradient(90deg, transparent, #00f0ff, transparent);
+            transition: all 0.5s;
         }
 
-        @keyframes dataStream {
-            0% { left: 0; width: 10%; }
-            50% { left: 50%; width: 40%; }
-            100% { left: 90%; width: 10%; }
+        .card:hover::before {
+            left: 100%;
         }
 
         .card:hover {
-            background: rgba(0, 240, 255, 0.05);
-            border-right-color: #00f0ff;
+            border-color: #00f0ff;
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.15);
+            transform: translateY(-5px);
         }
 
         .card-num {
-            font-size: 11px;
-            color: #00a2ff;
-            margin-bottom: 15px;
+            font-size: 13px;
+            font-family: monospace;
+            color: #00f0ff;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
 
         .card h3 {
             font-size: 20px;
-            color: #ffffff;
+            font-weight: 800;
             margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #ffffff;
         }
 
         .card p {
             color: #8da2b5;
-            font-size: 13.5px;
-            font-family: sans-serif;
+            font-size: 14px;
         }
 
-        /* CASOS DE ÉXITO ESTILO TERMINAL */
         .portfolio-section {
-            padding: 0 10% 80px 10%;
+            padding: 0 10% 60px 10%;
         }
 
         .portfolio-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 35px;
+            gap: 30px;
         }
 
         .portfolio-box {
-            background: #020612;
-            border: 1px solid #00f0ff;
-            padding: 40px;
-            position: relative;
+            background: rgba(10, 14, 26, 0.8);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            border-radius: 6px;
+            padding: 45px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
         }
 
-        .portfolio-box::before {
-            content: '[ LIVE_OPERATION ]';
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 9px;
-            color: #00f0ff;
+        .portfolio-box:hover {
+            border-color: #00f0ff;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
         }
 
         .portfolio-content h3 {
-            font-size: 22px;
-            color: #ffffff;
+            font-size: 24px;
+            font-weight: 900;
             text-transform: uppercase;
             margin-bottom: 15px;
+            color: #ffffff;
         }
 
         .portfolio-content .p-tag {
-            color: #00a2ff;
-            font-size: 11px;
+            color: #00f0ff;
+            font-family: monospace;
+            font-weight: 700;
+            font-size: 12px;
             margin-bottom: 15px;
+            text-transform: uppercase;
         }
 
         .portfolio-content p {
             color: #8da2b5;
-            font-size: 13.5px;
-            font-family: sans-serif;
+            font-size: 14px;
+            margin-bottom: 25px;
         }
 
-        /* MATRIZ DE TECNOLOGÍAS */
         .tech-matrix {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            padding: 0 10% 80px 10%;
+            padding: 0 10% 60px 10%;
         }
 
         .tech-item {
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            background: #020204;
+            background: rgba(10, 14, 26, 0.9);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            border-radius: 4px;
             padding: 25px;
             text-align: center;
         }
 
         .tech-item:hover {
             border-color: #00f0ff;
-            background: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0,240,255,0.2);
         }
 
         .tech-item .t-icon {
-            font-size: 28px;
+            font-size: 24px;
             margin-bottom: 10px;
         }
 
         .tech-item .t-name {
-            font-size: 12px;
-            font-weight: bold;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
             color: #ffffff;
         }
 
@@ -443,18 +623,26 @@
             text-align: center;
             padding: 40px 10%;
             font-size: 11px;
-            color: #00a2ff;
-            border-top: 2px dashed rgba(0, 240, 255, 0.2);
+            color: #8da2b5;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        footer .f-sub {
+            color: #ffffff;
+            font-weight: 700;
+            margin-top: 5px;
         }
 
         footer .f-sub span {
             color: #00f0ff;
-            text-shadow: 0 0 10px #00f0ff;
         }
 
         /* RESPONSIVE */
-        @media (max-width: 900px) {
-            .grid-services, .portfolio-grid, .tech-matrix { grid-template-columns: 1fr; }
+        @media (max-width: 950px) {
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero-main-content { text-align: center; }
+            .portfolio-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 38px; }
         }
     </style>
@@ -494,6 +682,24 @@ class AuraBlueprintsModule:
             <h1 id="hero-title">Absolute Automation <span>For Real Businesses</span></h1>
             <p id="hero-desc">We destroy operational inefficiency. We design, structure, and implement advanced software engines, secure local databases, and automated management systems tailored to your commercial infrastructure.</p>
             <button class="btn" id="hero-btn" onclick="activateWizard()">Start Project</button>
+        </div>
+
+        <div class="hero-phone-container" id="heroPhone">
+            <div class="phone-mockup">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                    <div class="phone-header">
+                        <div class="phone-avatar"></div>
+                        <div class="phone-status">
+                            Aura Bot Engine
+                            <span>• Online / Active</span>
+                        </div>
+                    </div>
+                    <div class="chat-bubble user">Hoy trabajé en Escuela Burbank, ¿mis horas?</div>
+                    <div class="chat-bubble bot">Procesando... Identificado: Melvin. Registradas 5.0 Hrs hoy en Luther Burbank HS. Total semanal: 10.0 Hrs. 🛠️</div>
+                    <div class="chat-bubble user">Gracias!</div>
+                </div>
+            </div>
         </div>
 
         <div class="wizard-container" id="auraWizard">
@@ -804,6 +1010,7 @@ class AuraBlueprintsModule:
 
         function activateWizard() {
             document.getElementById('heroMain').classList.add('hidden');
+            document.getElementById('heroPhone').classList.add('hidden');
             document.getElementById('auraWizard').style.display = 'block';
             updateWizardOptions();
         }
@@ -811,6 +1018,7 @@ class AuraBlueprintsModule:
         function closeWizard() {
             document.getElementById('auraWizard').style.display = 'none';
             document.getElementById('heroMain').classList.remove('hidden');
+            document.getElementById('heroPhone').classList.remove('hidden');
         }
 
         function nextStep(step, val) {
