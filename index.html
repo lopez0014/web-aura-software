@@ -9,19 +9,19 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Courier New', Courier, monospace, sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: #030305;
-            color: #ffffff;
+            background-color: #020204;
+            color: #00f0ff;
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.5;
             position: relative;
         }
 
-        /* FONDO DINÁMICO FUTURISTA - NEON GRID ANIMADO */
+        /* ESCENARIO INTERACTIVO HOLOGRÁFICO */
         .parallax-bg {
             position: fixed;
             top: 0;
@@ -29,476 +29,340 @@
             width: 100%;
             height: 100%;
             background: 
-                linear-gradient(rgba(3, 3, 5, 0.85), rgba(3, 3, 5, 0.95)),
-                linear-gradient(90deg, rgba(255, 85, 0, 0.03) 1px, transparent 1px),
-                linear-gradient(rgba(255, 85, 0, 0.03) 1px, transparent 1px);
-            background-size: 100% 100%, 40px 40px, 40px 40px;
+                radial-gradient(circle at 50% 30%, rgba(0, 81, 255, 0.15) 0%, transparent 60%),
+                linear-gradient(rgba(2, 2, 4, 0.95), rgba(2, 2, 4, 0.98)),
+                perspective(500px) rotateX(60deg) linear-gradient(rgba(0, 240, 255, 0.03) 2px, transparent 2px),
+                perspective(500px) rotateX(60deg) linear-gradient(90deg, rgba(0, 240, 255, 0.03) 2px, transparent 2px);
+            background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
             z-index: -3;
-            animation: gridMove 20s linear infinite;
+            animation: hyperDrive 12s linear infinite;
         }
 
-        /* Resplandores de neón ambientales en las esquinas */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -10%;
-            right: -10%;
-            width: 50vw;
-            height: 50vh;
-            background: radial-gradient(circle, rgba(255, 85, 0, 0.08) 0%, transparent 70%);
-            z-index: -2;
-            pointer-events: none;
+        @keyframes hyperDrive {
+            0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+            100% { background-position: 0 0, 0 0, 0 30px, 30px 0; }
         }
 
-        body::after {
-            content: '';
-            position: fixed;
-            bottom: -10%;
-            left: -10%;
-            width: 50vw;
-            height: 50vh;
-            background: radial-gradient(circle, rgba(140, 0, 255, 0.06) 0%, transparent 70%);
-            z-index: -2;
-            pointer-events: none;
-        }
-
-        @keyframes gridMove {
-            0% { background-position: 0 0, 0 0, 0 0; }
-            100% { background-position: 0 0, 0 40px, 0 40px; }
-        }
-
-        /* MATRIZ DE CÓDIGO - TEXTURA AMBIENTAL */
+        /* TEXTURA DE MATRIZ MEJORADA */
         .code-matrix-overlay {
             position: absolute;
-            top: 0;
-            left: 5%;
-            width: 90%;
-            height: 450%;
+            top: 10%;
+            left: 2%;
+            width: 96%;
+            height: 400%;
             font-family: monospace;
-            font-size: 11px;
-            color: rgba(255, 85, 0, 0.025);
-            padding: 20px;
+            font-size: 10px;
+            color: rgba(0, 240, 255, 0.03);
             white-space: pre;
             pointer-events: none;
             z-index: -1;
-            line-height: 1.8;
-            filter: blur(1px);
+            line-height: 1.5;
         }
 
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 10%;
-            border-bottom: 1px solid rgba(255, 85, 0, 0.15);
-            background: rgba(5, 5, 7, 0.65);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            padding: 15px 5%;
+            border-bottom: 2px dashed rgba(0, 240, 255, 0.3);
+            background: rgba(2, 2, 4, 0.85);
+            backdrop-filter: blur(15px);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 900;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            white-space: nowrap;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            color: #ffffff;
         }
 
         .logo span {
-            color: #ff5500;
-            text-shadow: 0 0 20px rgba(255, 85, 0, 0.6);
+            color: #00f0ff;
+            text-shadow: 0 0 15px #00f0ff, 0 0 30px rgba(0, 240, 255, 0.5);
         }
 
         .menu-links {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
         }
 
         .menu-links a {
-            color: #d1d1d6;
+            color: #00a2ff;
             text-decoration: none;
-            font-size: 12px;
-            font-weight: 700;
+            font-size: 11px;
+            font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .menu-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #ff5500;
-            transition: width 0.3s ease;
-        }
-
-        .menu-links a:hover::after {
-            width: 100%;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+            padding: 5px 10px;
         }
 
         .menu-links a:hover {
-            color: #ff5500;
-            text-shadow: 0 0 10px rgba(255, 85, 0, 0.3);
+            color: #ffffff;
+            background: rgba(0, 240, 255, 0.1);
+            border-color: #00f0ff;
+            text-shadow: 0 0 8px #00f0ff;
         }
 
         .btn-demo {
-            border: 1px solid #ff5500;
-            background: rgba(255, 85, 0, 0.1);
-            color: #ff5500;
-            padding: 12px 24px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 800;
+            border: 1px solid #00f0ff;
+            background: transparent;
+            color: #00f0ff;
+            padding: 10px 20px;
+            font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            transition: all 0.3s;
         }
 
         .btn-demo:hover {
-            background: #ff5500;
-            color: #ffffff;
-            box-shadow: 0 0 25px rgba(255, 85, 0, 0.5);
-            transform: scale(1.05);
+            background: #00f0ff;
+            color: #020204;
+            box-shadow: 0 0 20px #00f0ff;
+            transform: translateY(-2px);
         }
 
         .btn-lang {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ff5500;
-            padding: 8px 14px;
-            border-radius: 4px;
-            font-family: monospace;
-            font-size: 12px;
-            font-weight: 700;
+            background: #00a2ff;
+            border: none;
+            color: #020204;
+            padding: 6px 12px;
+            font-weight: 900;
             cursor: pointer;
-            transition: all 0.2s ease;
-            letter-spacing: 1px;
+            font-size: 11px;
         }
 
-        .btn-lang:hover {
-            border-color: #ff5500;
-            background: rgba(255, 85, 0, 0.1);
-            box-shadow: 0 0 10px rgba(255, 85, 0, 0.2);
-        }
-
-        /* HERO SECTION */
+        /* HERO INTERFAZ DE COMANDO */
         .hero {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 120px 10%;
-            min-height: 90vh;
+            padding: 100px 5%;
+            min-height: 85vh;
             position: relative;
-        }
-
-        .hero-main-content {
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            width: 100%;
-        }
-
-        .hero-main-content.hidden {
-            display: none;
         }
 
         .badge {
-            background: rgba(255, 85, 0, 0.05);
-            border: 1px solid rgba(255, 85, 0, 0.4);
-            color: #ff5500;
-            padding: 8px 20px;
-            border-radius: 50px;
+            border: 1px double #00f0ff;
+            background: rgba(0, 240, 255, 0.05);
+            color: #ffffff;
+            padding: 8px 25px;
             font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             display: inline-block;
-            box-shadow: 0 0 15px rgba(255, 85, 0, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Efecto láser pasando por el badge */
-        .badge::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 85, 0, 0.4), transparent);
-            animation: laserScan 4s infinite;
-        }
-
-        @keyframes laserScan {
-            0% { left: -100%; }
-            50% { left: 100%; }
-            100% { left: 100%; }
+            box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.2);
         }
 
         .hero h1 {
-            font-size: 72px;
+            font-size: 68px;
             font-weight: 900;
-            letter-spacing: -2px;
+            letter-spacing: -1px;
             line-height: 1.1;
             margin-bottom: 30px;
             text-transform: uppercase;
+            color: #ffffff;
         }
 
         .hero h1 span {
-            color: #ff5500;
-            text-shadow: 0 0 30px rgba(255, 85, 0, 0.4);
+            color: #00f0ff;
+            background: linear-gradient(180deg, #ffffff, #00f0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 18px;
-            color: #b3b3b3;
-            max-width: 750px;
+            font-size: 16px;
+            color: #00a2ff;
+            max-width: 800px;
             margin-bottom: 45px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            font-family: sans-serif;
         }
 
         .btn {
-            background: #ff5500;
-            color: #ffffff;
-            padding: 18px 45px;
-            border: none;
-            border-radius: 4px;
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 2px;
+            background: transparent;
+            color: #00f0ff;
+            padding: 20px 50px;
+            border: 2px solid #00f0ff;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
             text-transform: uppercase;
             cursor: pointer;
-            box-shadow: 0 5px 35px rgba(255, 85, 0, 0.45);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 40px rgba(255, 85, 0, 0.65);
-            background: #ff661a;
+            background: rgba(0, 240, 255, 0.15);
+            box-shadow: 0 0 30px #00f0ff;
+            letter-spacing: 5px;
         }
 
-        /* WIZARD INTERACTIVO CRISTALIZADO */
+        /* CONSOLA WIZARD RE-DISEÑADA */
         .wizard-container {
             display: none;
-            background: rgba(15, 15, 25, 0.7);
-            border: 1px solid rgba(255, 85, 0, 0.4);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-radius: 8px;
-            padding: 45px;
-            max-width: 650px;
+            background: #040814;
+            border: 3px solid #00f0ff;
+            padding: 40px;
+            max-width: 700px;
             width: 100%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 85, 0, 0.1);
+            box-shadow: 0 0 50px rgba(0, 240, 255, 0.3);
             text-align: left;
-            animation: fadeIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+            position: relative;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95) translateY(15px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .wizard-step {
-            display: none;
-        }
-
-        .wizard-step.active {
-            display: block;
+        .wizard-container::before {
+            content: 'SYS_ACTIVATION_CORE';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #020204;
+            padding: 0 10px;
+            font-size: 10px;
+            color: #00f0ff;
+            letter-spacing: 2px;
         }
 
         .wizard-container h2 {
-            font-size: 26px;
-            font-weight: 800;
+            font-size: 22px;
             text-transform: uppercase;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
+            margin-bottom: 30px;
+            color: #ffffff;
         }
 
         .wizard-container h2 span {
-            color: #ff5500;
-            text-shadow: 0 0 15px rgba(255, 85, 0, 0.3);
-        }
-
-        .wizard-options {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 25px;
+            color: #00f0ff;
         }
 
         .opt-btn {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #ffffff;
-            padding: 16px 22px;
-            border-radius: 4px;
+            background: transparent;
+            border: 1px dashed #00a2ff;
+            color: #00f0ff;
+            padding: 18px 25px;
             text-align: left;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 13px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.2s;
         }
 
         .opt-btn:hover {
-            border-color: #ff5500;
-            background: rgba(255, 85, 0, 0.1);
-            padding-left: 32px;
-            box-shadow: inset 0 0 15px rgba(255, 85, 0, 0.15);
+            background: #00f0ff;
+            color: #020204;
+            font-weight: bold;
+            padding-left: 35px;
         }
 
         .wizard-input {
             width: 100%;
-            background: rgba(5, 5, 7, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 16px;
+            background: #020204;
+            border: 1px solid #00f0ff;
+            padding: 15px;
             color: #ffffff;
-            border-radius: 4px;
             margin-bottom: 20px;
-            font-size: 14px;
-            transition: border-color 0.3s;
         }
 
-        .wizard-input:focus {
-            border-color: #ff5500;
-            outline: none;
-            box-shadow: 0 0 15px rgba(255, 85, 0, 0.2);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #a0a0aa;
-            border: none;
-            cursor: pointer;
-            font-size: 11px;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 2px;
-            transition: color 0.3s;
-        }
-
-        .btn-secondary:hover {
-            color: #ff5500;
-        }
-
-        /* GRID SECCIONES GENERALES */
+        /* SECCIONES: RE-DISEÑO COMPLETO TIPO CABINA */
         .section-header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 120px 10% 40px 10%;
-            border-bottom: 1px solid rgba(255, 85, 0, 0.15);
+            padding: 80px 10% 20px 10%;
+            border-bottom: 2px solid rgba(0, 240, 255, 0.2);
             margin-bottom: 50px;
         }
 
         .section-title-left {
-            font-size: 36px;
+            font-size: 28px;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #ffffff;
         }
 
         .section-title-left span {
-            color: #ff5500;
-            text-shadow: 0 0 20px rgba(255, 85, 0, 0.4);
+            color: #00f0ff;
         }
 
         .ceo-signature-badge {
-            font-family: monospace;
             font-size: 11px;
-            font-weight: 700;
-            color: #ff5500;
-            border: 1px solid rgba(255, 85, 0, 0.4);
-            background: rgba(255, 85, 0, 0.08);
-            padding: 10px 20px;
-            border-radius: 4px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(255, 85, 0, 0.1);
+            color: #00f0ff;
+            border: 1px solid #00f0ff;
+            padding: 8px 16px;
         }
 
+        /* SISTEMA DE PANELES MODULARES */
         .grid-services {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             padding: 0 10% 60px 10%;
         }
 
-        /* TARJETAS DE MATRIZ CRISTALIZADAS */
         .card {
-            background: rgba(15, 15, 22, 0.55);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            padding: 40px 35px;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: rgba(4, 8, 20, 0.8);
+            border-left: 5px solid #00f0ff;
+            border-right: 1px solid rgba(0, 240, 255, 0.2);
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+            padding: 35px;
             position: relative;
-            overflow: hidden;
         }
 
-        .card::before {
+        /* Barra de procesamiento interna simulada */
+        .card::after {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 85, 0, 0.05) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.4s;
+            width: 30%;
+            height: 2px;
+            background: #00f0ff;
+            box-shadow: 0 0 10px #00f0ff;
+            animation: dataStream 3s infinite linear;
+        }
+
+        @keyframes dataStream {
+            0% { left: 0; width: 10%; }
+            50% { left: 50%; width: 40%; }
+            100% { left: 90%; width: 10%; }
         }
 
         .card:hover {
-            border-color: rgba(255, 85, 0, 0.5);
-            background: rgba(18, 18, 28, 0.8);
-            transform: translateY(-6px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 85, 0, 0.15);
-        }
-
-        .card:hover::before {
-            opacity: 1;
+            background: rgba(0, 240, 255, 0.05);
+            border-right-color: #00f0ff;
         }
 
         .card-num {
-            font-size: 13px;
-            font-family: monospace;
-            color: #ff5500;
-            margin-bottom: 25px;
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-size: 11px;
+            color: #00a2ff;
+            margin-bottom: 15px;
         }
 
         .card h3 {
-            font-size: 22px;
-            font-weight: 800;
-            margin-bottom: 18px;
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
         .card p {
-            color: #b3b3b3;
-            font-size: 14px;
-            line-height: 1.6;
+            color: #8da2b5;
+            font-size: 13.5px;
+            font-family: sans-serif;
         }
 
+        /* CASOS DE ÉXITO ESTILO TERMINAL */
         .portfolio-section {
             padding: 0 10% 80px 10%;
         }
@@ -510,150 +374,88 @@
         }
 
         .portfolio-box {
-            background: rgba(15, 15, 25, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            padding: 50px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: #020612;
+            border: 1px solid #00f0ff;
+            padding: 40px;
+            position: relative;
         }
 
-        .portfolio-box:hover {
-            border-color: rgba(140, 0, 255, 0.4);
-            transform: translateY(-4px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.7), 0 0 25px rgba(140, 0, 255, 0.1);
+        .portfolio-box::before {
+            content: '[ LIVE_OPERATION ]';
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 9px;
+            color: #00f0ff;
         }
 
         .portfolio-content h3 {
-            font-size: 26px;
-            font-weight: 900;
+            font-size: 22px;
+            color: #ffffff;
             text-transform: uppercase;
             margin-bottom: 15px;
-            letter-spacing: 0.5px;
         }
 
         .portfolio-content .p-tag {
-            color: #ff5500;
-            font-family: monospace;
-            font-weight: 700;
-            font-size: 12px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #00a2ff;
+            font-size: 11px;
+            margin-bottom: 15px;
         }
 
         .portfolio-content p {
-            color: #b3b3b3;
-            font-size: 14px;
-            margin-bottom: 25px;
-            line-height: 1.6;
+            color: #8da2b5;
+            font-size: 13.5px;
+            font-family: sans-serif;
         }
 
+        /* MATRIZ DE TECNOLOGÍAS */
         .tech-matrix {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
             padding: 0 10% 80px 10%;
         }
 
         .tech-item {
-            background: rgba(10, 10, 15, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 6px;
-            padding: 30px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            background: #020204;
+            padding: 25px;
             text-align: center;
-            font-family: monospace;
-            backdrop-filter: blur(5px);
-            transition: all 0.3s;
         }
 
         .tech-item:hover {
-            border-color: #ff5500;
-            background: rgba(15, 15, 22, 0.9);
-            box-shadow: 0 0 20px rgba(255, 85, 0, 0.2);
-            transform: scale(1.02);
+            border-color: #00f0ff;
+            background: rgba(0, 240, 255, 0.1);
         }
 
         .tech-item .t-icon {
-            font-size: 32px;
-            color: #ff5500;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 10px rgba(255, 85, 0, 0.3));
+            font-size: 28px;
+            margin-bottom: 10px;
         }
 
         .tech-item .t-name {
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: bold;
             color: #ffffff;
         }
 
         footer {
             text-align: center;
-            padding: 50px 10%;
+            padding: 40px 10%;
             font-size: 11px;
-            color: #8e8e93;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            line-height: 2;
-            background: rgba(3, 3, 5, 0.9);
-        }
-
-        footer .f-sub {
-            color: #c7c7cc;
-            font-weight: 700;
-            margin-top: 8px;
+            color: #00a2ff;
+            border-top: 2px dashed rgba(0, 240, 255, 0.2);
         }
 
         footer .f-sub span {
-            color: #ff5500;
-            text-shadow: 0 0 10px rgba(255, 85, 0, 0.3);
+            color: #00f0ff;
+            text-shadow: 0 0 10px #00f0ff;
         }
 
-        /* RESPONSIVE ENGINE */
+        /* RESPONSIVE */
         @media (max-width: 900px) {
-            .portfolio-grid { grid-template-columns: 1fr; }
-            header { padding: 15px 5%; }
-            .menu-links { gap: 15px; }
-            .section-header-container { flex-direction: column; align-items: flex-start; gap: 20px; padding-left: 5%; padding-right: 5%; }
-            .grid-services { padding-left: 5%; padding-right: 5%; grid-template-columns: 1fr; }
-            .portfolio-section { padding-left: 5%; padding-right: 5%; }
-            .tech-matrix { padding-left: 5%; padding-right: 5%; }
-            
-            .hero h1 {
-                font-size: 44px;
-                line-height: 1.2;
-            }
-            .hero p {
-                font-size: 16px;
-            }
-            .wizard-container {
-                padding: 30px 20px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-                padding-bottom: 15px;
-            }
-            .menu-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 12px;
-            }
-            .menu-links a {
-                font-size: 11px;
-            }
-            .btn-demo {
-                padding: 10px 18px;
-                font-size: 11px;
-            }
+            .grid-services, .portfolio-grid, .tech-matrix { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 38px; }
         }
     </style>
 </head>
@@ -932,13 +734,13 @@ class AuraBlueprintsModule:
             
             const s1Opts = document.getElementById('w-s1-opts');
             s1Opts.innerHTML = '';
-            data.ws1Opts.forEach((opt, idx) => {
+            data.ws1Opts.forEach((opt) => {
                 s1Opts.innerHTML += `<button class="opt-btn" onclick="nextStep(2, '${opt}')">${opt}</button>`;
             });
 
             const s2Opts = document.getElementById('w-s2-opts');
             s2Opts.innerHTML = '';
-            data.ws2Opts.forEach((opt, idx) => {
+            data.ws2Opts.forEach((opt) => {
                 s2Opts.innerHTML += `<button class="opt-btn" onclick="nextStep(3, '${opt}')">${opt}</button>`;
             });
         }
