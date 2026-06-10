@@ -22,7 +22,7 @@
             position: relative;
         }
 
-        /* 🔦 CAPA DE SPOTLIGHT VICTORIAL REAL: GENERA EL CONO DE LUZ Y EL REFLEJO EN EL PISO */
+        /* 🔦 CAPA DE SPOTLIGHT CÓNICO: ILUMINA AL ROBOT EN 3D DESDE ARRIBA */
         .spotlight-layer {
             position: fixed;
             top: 0;
@@ -98,14 +98,14 @@
             cursor: pointer;
         }
 
-        /* HERO - ALINEACIÓN LIMPIA EN DOS SECCIONES INDEPENDIENTES */
+        /* HERO - DISTRIBUCIÓN TEXTO DE RESPALDO + ROBOT INTEGRADO */
         .hero {
             display: grid;
-            grid-template-columns: 1.10fr 0.90fr;
+            grid-template-columns: 1.15fr 0.85fr;
             align-items: center;
-            gap: 60px;
-            padding: 80px 10%;
-            min-height: 85vh;
+            gap: 40px;
+            padding: 60px 10%;
+            min-height: 90vh;
             position: relative;
         }
 
@@ -133,7 +133,7 @@
         }
 
         .hero h1 {
-            font-size: 54px;
+            font-size: 56px;
             font-weight: 900;
             letter-spacing: -1.5px;
             line-height: 1.1;
@@ -146,7 +146,7 @@
         }
 
         .hero p {
-            font-size: 16.5px;
+            font-size: 17px;
             color: #a0a0aa;
             margin-bottom: 40px;
         }
@@ -161,93 +161,38 @@
             font-weight: 700;
             text-transform: uppercase;
             cursor: pointer;
+            transition: background 0.3s;
         }
 
-        /* 📱 AREA DE LOS DOS SMARTPHONES CENTRADOS EN LA LUZ */
-        .hero-phones-display {
+        .btn:hover {
+            background: #ff661a;
+        }
+
+        /* 🤖 DISPLAY DEL ROBOT CYBERNÉTICO HD EN 3D PROCESADO */
+        .hero-robot-display {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 24px;
-            z-index: 10;
-        }
-
-        .phone-wrapper {
-            width: 195px;
-            height: 405px;
-            background: #000000;
-            border: 7px solid #1a1a1c;
-            border-radius: 32px;
             position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.9);
+            z-index: 2;
         }
 
-        .phone-notch-small {
-            width: 80px;
-            height: 16px;
-            background: #1a1a1c;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-            z-index: 12;
-        }
-
-        /* Control de Desplazamiento Interno (Interactividad Vertical) */
-        .phone-slider {
+        .robot-render {
             width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            max-width: 440px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 50px rgba(0, 240, 255, 0.15));
+            animation: floatingRobot 6s ease-in-out infinite;
         }
 
-        .phone-screen-content {
-            min-height: 100%;
-            width: 100%;
-            padding: 25px 12px 12px 12px;
-            display: flex;
-            flex-direction: column;
+        @keyframes floatingRobot {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
 
-        /* GESTOR DE HOVER: AL PASAR POR ENCIMA SE ACTIVA LA ACCIÓN SORPRESA INTERNA */
-        .hero-phones-display:hover .phone-slider {
-            transform: translateY(-100%);
-        }
-
-        /* PANTALLA MÓVIL 1A: REGISTRO DE HORAS GENERAL (AURA CLUB) */
-        .bg-auraclub { background: #0c0c0f; }
-        .ac-title { font-size: 13px; font-weight: 800; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 4px; margin-bottom: 12px; color: #ff5500; letter-spacing: 0.5px; }
-        .ac-sheet { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin-bottom: 10px; }
-        .ac-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); font-size: 8px; text-align: center; padding: 6px 0; border-radius: 3px; }
-        .ac-btn-sub { background: #ff5500; color: white; border: none; font-size: 9px; padding: 7px; font-weight: bold; border-radius: 4px; margin-top: auto; text-align: center; text-transform: uppercase; }
-
-        /* PANTALLA MÓVIL 1B (SORPRESA): CONTROL FINANCIERO DE INVOICES */
-        .bg-invoices { background: #05070a; color: #00ff66; font-family: monospace; }
-        .inv-title { font-size: 11px; font-weight: bold; border-bottom: 1px dashed #00ff66; padding-bottom: 4px; margin-bottom: 12px; }
-        .inv-row { font-size: 9px; margin-bottom: 7px; display: flex; justify-content: space-between; }
-        .inv-status { background: rgba(0,255,102,0.1); padding: 1px 4px; border-radius: 2px; }
-
-        /* PANTALLA MÓVIL 2A: CHAT DE WHATSAPP LIMPIO SIN NOMBRES COMERCIALES */
-        .bg-whatsapp-clean { background: #0a1114; }
-        .wa-header { display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 6px; margin-bottom: 10px; }
-        .wa-dot { width: 6px; height: 6px; background: #00ff66; border-radius: 50%; }
-        .wa-bubble { font-size: 9px; padding: 8px 10px; border-radius: 8px; max-width: 90%; margin-bottom: 8px; line-height: 1.35; }
-        .wa-bubble.in { background: #1f2c33; color: #e9edef; align-self: flex-start; border-left: 2px solid #ff5500; }
-        .wa-bubble.out { background: #005c4b; color: #ffffff; align-self: flex-end; }
-
-        /* PANTALLA MÓVIL 2B (SORPRESA): PANEL OPERATIVO DE CAMPO EN VIVO */
-        .bg-analytics { background: #060509; color: #00f0ff; font-family: monospace; }
-        .an-title { font-size: 11px; font-weight: bold; margin-bottom: 12px; border-bottom: 1px solid #00f0ff; padding-bottom: 4px; }
-        .an-bar-container { margin-bottom: 10px; }
-        .an-label { font-size: 9px; margin-bottom: 3px; display: flex; justify-content: space-between; color: #9aa0a6; }
-        .an-bar { height: 4px; background: rgba(0,240,255,0.1); border-radius: 2px; overflow: hidden; }
-        .an-fill { height: 100%; background: #00f0ff; }
-
-        /* WIZARD OPERATIVO */
+        /* WIZARD OPERATIVO CENTRALIZADO */
         .wizard-container {
             display: none;
             background: #0a0a0f;
@@ -259,6 +204,7 @@
             grid-column: span 2;
             margin: 0 auto;
             z-index: 20;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
 
         .wizard-step { display: none; }
@@ -282,7 +228,7 @@
         .wizard-input:focus { border-color: #ff5500; outline: none; }
         .btn-secondary { background: transparent; color: #8c8c96; border: none; cursor: pointer; font-size: 12px; text-transform: uppercase; }
 
-        /* RE-AJUSTE DE CONTENEDORES INFERIORES */
+        /* SECCIONES DE SERVICIOS EXPANDIDA */
         .section-header-container {
             display: flex;
             justify-content: space-between;
@@ -296,16 +242,17 @@
         .section-title-left span { color: #ff5500; }
         .ceo-signature-badge { font-family: monospace; font-size: 12px; color: #ff5500; border: 1px solid #ff5500; padding: 8px 16px; text-transform: uppercase; }
 
-        .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; padding: 0 10% 40px 10%; }
-        .card { background: #050507; border: 1px solid rgba(255, 255, 255, 0.03); padding: 35px 30px; border-radius: 4px; }
+        .grid-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 0 10% 40px 10%; }
+        .card { background: #050507; border: 1px solid rgba(255, 255, 255, 0.03); padding: 35px 30px; border-radius: 4px; transition: border-color 0.3s; }
         .card:hover { border-color: #ff5500; }
         .card-num { font-size: 14px; font-family: monospace; color: #ff5500; margin-bottom: 20px; }
         .card h3 { font-size: 20px; margin-bottom: 15px; text-transform: uppercase; }
         .card p { color: #a0a0aa; font-size: 13.5px; }
 
+        /* PORTAFOLIO DE PROYECTOS EXTENDIDO */
         .portfolio-section { padding: 0 10% 60px 10%; }
-        .portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .portfolio-box { background: #050507; border: 1px solid rgba(255, 255, 255, 0.03); padding: 45px; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .portfolio-box { background: #050507; border: 1px solid rgba(255, 255, 255, 0.03); padding: 45px; border-radius: 4px; }
         .portfolio-content h3 { font-size: 24px; text-transform: uppercase; margin-bottom: 15px; }
         .portfolio-content .p-tag { color: #ff5500; font-family: monospace; font-size: 12px; margin-bottom: 15px; text-transform: uppercase; }
         .portfolio-content p { color: #a0a0aa; font-size: 14px; margin-bottom: 25px; }
@@ -324,7 +271,7 @@
             .hero-main-content { text-align: center; }
             .portfolio-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 38px; }
-            .hero-phones-display { margin-top: 45px; }
+            .hero-robot-display { margin-top: 30px; }
         }
     </style>
 </head>
@@ -334,17 +281,17 @@
         <defs>
             <linearGradient id="lightCone" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
-                <stop offset="20%" stop-color="#ffffff" stop-opacity="0.35" />
-                <stop offset="100%" stop-color="#ffffff" stop-opacity="0.75" />
+                <stop offset="20%" stop-color="#ffffff" stop-opacity="0.30" />
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0.70" />
             </linearGradient>
             <radialGradient id="floorReflection" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
-                <stop offset="50%" stop-color="#ffffff" stop-opacity="0.3" />
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
+                <stop offset="60%" stop-color="#ffffff" stop-opacity="0.2" />
                 <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
             </radialGradient>
         </defs>
-        <polygon points="1440,-50 1140,840 1740,840" fill="url(#lightCone)" />
-        <ellipse cx="1440" cy="830" rx="420" ry="120" fill="url(#floorReflection)" />
+        <polygon points="1520,-50 1150,900 1890,900" fill="url(#lightCone)" />
+        <ellipse cx="1520" cy="890" rx="380" ry="100" fill="url(#floorReflection)" />
     </svg>
 
     <header>
@@ -366,60 +313,8 @@
             <button class="btn" id="hero-btn" onclick="activateWizard()">Start Project</button>
         </div>
 
-        <div class="hero-phones-display" id="heroPhone">
-            
-            <div class="phone-wrapper">
-                <div class="phone-notch-small"></div>
-                <div class="phone-slider">
-                    <div class="phone-screen-content bg-auraclub">
-                        <div class="ac-title">Aura Club</div>
-                        <div style="font-size: 8px; margin-bottom: 10px; color: #a0a0aa; text-align: center;">Timesheet Engine</div>
-                        <div class="ac-sheet">
-                            <div class="ac-box">Lu<br><b>8.0</b></div>
-                            <div class="ac-box">Ma<br><b>8.0</b></div>
-                            <div class="ac-box">Mi<br><b>10.</b></div>
-                            <div class="ac-box">Ju<br><b>8.0</b></div>
-                            <div class="ac-box">Vi<br><b>8.0</b></div>
-                            <div class="ac-box">Sá<br><b>5.0</b></div>
-                        </div>
-                        <div class="ac-btn-sub">Submit Hours</div>
-                    </div>
-                    <div class="phone-screen-content bg-invoices">
-                        <div class="inv-title">> CORE_INVOICES</div>
-                        <div class="inv-row"><span>INV-2041</span><div class="inv-status">PAID</div></div>
-                        <div class="inv-row"><span>INV-2042</span><div class="inv-status">PAID</div></div>
-                        <div class="inv-row"><span>INV-2043</span><div class="inv-status" style="color: #ffcc00; background: rgba(255,204,0,0.1);">PENDING</div></div>
-                        <div style="font-size: 8px; margin-top: auto; color: #8da2b5;">System secure.</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="phone-wrapper">
-                <div class="phone-notch-small"></div>
-                <div class="phone-slider">
-                    <div class="phone-screen-content bg-whatsapp-clean">
-                        <div class="wa-header">
-                            <div class="wa-dot"></div>
-                            <div style="font-size: 9.5px; font-weight: bold; color: #ffffff;">Aura Automation</div>
-                        </div>
-                        <div class="wa-bubble in">¿Horas registradas hoy en el proyecto?</div>
-                        <div class="wa-bubble out">Módulo verificado. Registro de horas cargado a base de datos del proyecto con éxito. 🚀</div>
-                    </div>
-                    <div class="phone-screen-content bg-analytics">
-                        <div class="an-title">> FIELD_METRICS</div>
-                        <div class="an-bar-container">
-                            <div class="an-label"><span>Structural Rebar</span><span>92%</span></div>
-                            <div class="an-bar"><div class="an-fill" style="width: 92%;"></div></div>
-                        </div>
-                        <div class="an-bar-container">
-                            <div class="an-label"><span>Concrete Labor</span><span>85%</span></div>
-                            <div class="an-bar"><div class="an-fill" style="width: 85%;"></div></div>
-                        </div>
-                        <div style="font-size: 8px; margin-top: auto; color: #a0a0aa;">All logs synchronized.</div>
-                    </div>
-                </div>
-            </div>
-
+        <div class="hero-robot-display" id="heroPhone">
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80" alt="Aura Industrial AI Robot Core" class="robot-render">
         </div>
 
         <div class="wizard-container" id="auraWizard">
@@ -503,6 +398,20 @@
                     <div class="p-tag" id="p2-tag">Case 02 // Local Automation</div>
                     <h3 id="p2-title">SaaS Time & Payroll</h3>
                     <p id="p2-desc">Implementation of industrial web dashboards optimized for commercial tablets across local operations points.</p>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <div class="portfolio-content">
+                    <div class="p-tag">// Case 03 // Heavy Machinery</div>
+                    <h3>Crane Automation Operating Core</h3>
+                    <p>Development of local telemetry engines for real-time monitoring of heavy industrial machinery weight capacity thresholds and driver shifting data logs.</p>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <div class="portfolio-content">
+                    <div class="p-tag">// Case 04 // AI Blueprints</div>
+                    <h3>Vector Blueprint Vision Engine</h3>
+                    <p>Integration of lightweight object detection algorithms to automatically isolate rebar layers from architectural vector layers in tablets.</p>
                 </div>
             </div>
         </div>
