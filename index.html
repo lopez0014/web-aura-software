@@ -21,7 +21,7 @@
             position: relative;
         }
 
-        /* FONDO TECNOLÓGICO DE ALTA FIDELIDAD CON IMAGEN Y MALLA DIGITAL */
+        /* FONDO TECNOLÓGICO CON IMAGEN Y MALLA DIGITAL */
         .parallax-bg {
             position: fixed;
             top: 0;
@@ -29,37 +29,22 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(180deg, rgba(3, 3, 8, 0.8) 0%, rgba(3, 3, 8, 0.95) 100%),
+                linear-gradient(180deg, rgba(3, 3, 8, 0.82) 0%, rgba(3, 3, 8, 0.96) 100%),
                 linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px),
                 linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
-                url('https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=1920&q=80'); /* Imagen real de ingeniería de fondo */
+                url('https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=1920&q=80');
             background-size: 100% 100%, 50px 50px, 50px 50px, cover;
             background-position: center;
             background-attachment: fixed;
             z-index: -3;
-            filter: hue-rotate(0deg);
-            animation: backgroundPulse 15s ease-in-out infinite alternate;
+            animation: backgroundPulse 20s ease-in-out infinite alternate;
         }
 
         @keyframes backgroundPulse {
-            0% { background-position: center, 0 0, 0 0, center; transform: scale(1); }
-            100% { background-position: center, 25px 25px, 25px 25px, center; transform: scale(1.03); }
+            0% { transform: scale(1); }
+            100% { transform: scale(1.02); }
         }
 
-        /* Nodos y Nebulosa de Energía */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 20%;
-            right: -10%;
-            width: 60vw;
-            height: 60vh;
-            background: radial-gradient(circle, rgba(0, 162, 255, 0.15) 0%, transparent 70%);
-            z-index: -2;
-            pointer-events: none;
-        }
-
-        /* TEXTURA AMBIENTAL DE CÓDIGO */
         .code-matrix-overlay {
             position: absolute;
             top: 0;
@@ -74,7 +59,6 @@
             pointer-events: none;
             z-index: -1;
             line-height: 1.8;
-            filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.5));
         }
 
         header {
@@ -89,7 +73,6 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .logo {
@@ -118,7 +101,7 @@
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
-            transition: color 0.3s, text-shadow 0.3s;
+            transition: color 0.3s;
         }
 
         .menu-links a:hover {
@@ -138,14 +121,12 @@
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
         }
 
         .btn-demo:hover {
             background: #00f0ff;
             color: #030308;
             box-shadow: 0 0 25px #00f0ff;
-            transform: scale(1.05);
         }
 
         .btn-lang {
@@ -158,27 +139,22 @@
             font-size: 12px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s;
         }
 
-        .btn-lang:hover {
-            border-color: #00f0ff;
-            background: rgba(0, 240, 255, 0.1);
-        }
-
-        /* HERO DIVIDIDO EN DOS COLUMNAS - TEXTO + TELÉFONO */
+        /* HERO DIVIDIDO CON PERSPECTIVA */
         .hero {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1.1fr 0.9fr;
             align-items: center;
-            gap: 50px;
-            padding: 100px 10%;
+            gap: 40px;
+            padding: 80px 10%;
             min-height: 85vh;
             position: relative;
+            perspective: 1000px; /* Habilita el entorno 3D de la sección */
         }
 
         .hero-main-content {
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition: opacity 0.5s ease;
             text-align: left;
         }
 
@@ -198,14 +174,13 @@
             text-transform: uppercase;
             margin-bottom: 25px;
             display: inline-block;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
         }
 
         .hero h1 {
             font-size: 56px;
             font-weight: 900;
             letter-spacing: -1px;
-            line-height: 1.1;
+            line-height: 1.15;
             margin-bottom: 25px;
             text-transform: uppercase;
             color: #ffffff;
@@ -235,7 +210,6 @@
             cursor: pointer;
             box-shadow: 0 5px 25px rgba(0, 240, 255, 0.3);
             transition: all 0.3s ease;
-            display: inline-block;
         }
 
         .btn:hover {
@@ -244,76 +218,114 @@
             transform: translateY(-2px);
         }
 
-        /* 📱 DISPOSITIVO MÓVIL INTERACTIVO EN 3D (MOCKUP AVANZADO) */
+        /* 📱 SMARTPHONE INTERACTIVO ULTRA-FUTURISTA INTERACTIVO CINEMATOGRÁFICO */
         .hero-phone-container {
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
+            width: 100%;
+            height: 100%;
         }
 
         .phone-mockup {
-            width: 290px;
-            height: 580px;
-            background: #0a0e1a;
-            border: 11px solid #1d263b;
-            border-radius: 40px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 240, 255, 0.15);
+            width: 300px;
+            height: 590px;
+            background: #060914;
+            border: 12px solid #161f33;
+            border-radius: 44px;
+            box-shadow: 
+                -15px 20px 40px rgba(0, 0, 0, 0.7), 
+                0 0 30px rgba(0, 240, 255, 0.1),
+                inset 0 0 15px rgba(240, 0, 255, 0.1);
             position: relative;
             overflow: hidden;
-            transform: rotateY(-15deg) rotateX(10deg);
-            transition: all 0.5s ease;
+            /* Giro inicial en 3D para dar profundidad */
+            transform: rotateY(-25deg) rotateX(15deg) rotateZ(-2deg);
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.15), box-shadow 0.6s ease;
         }
 
-        .phone-mockup:hover {
-            transform: rotateY(0deg) rotateX(0deg) scale(1.03);
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 240, 255, 0.3);
+        /* 💥 SORPRESA: AL PONER EL MOUSE, EL TELÉFONO GIRA EN 3D Y SE ENCIENDE SU ENERGÍA */
+        .hero-phone-container:hover .phone-mockup {
+            transform: rotateY(15deg) rotateX(5deg) rotateZ(2deg) scale(1.05);
+            border-color: #00f0ff;
+            box-shadow: 
+                20px 25px 50px rgba(0, 0, 0, 0.8), 
+                0 0 50px rgba(0, 240, 255, 0.4),
+                0 0 30px rgba(140, 0, 255, 0.3);
         }
 
-        /* Cámara/Isla del teléfono */
         .phone-notch {
-            width: 120px;
-            height: 25px;
-            background: #1d263b;
+            width: 130px;
+            height: 28px;
+            background: #161f33;
             position: absolute;
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
+            border-bottom-left-radius: 18px;
+            border-bottom-right-radius: 18px;
             z-index: 10;
+            transition: background 0.5s;
         }
 
-        /* Interfaz simulada de WhatsApp del Bot dentro del teléfono */
+        .hero-phone-container:hover .phone-notch {
+            background: #00f0ff;
+        }
+
+        /* Pantalla interna */
         .phone-screen {
             width: 100%;
             height: 100%;
-            background: #0b141a; /* Color oscuro real de WhatsApp */
-            padding: 35px 14px 15px 14px;
+            background: #0a0f14;
+            padding: 40px 16px 20px 16px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            gap: 15px;
+            gap: 18px;
+            position: relative;
+        }
+
+        /* EFECTO ESCÁNER LÁSER QUE RECORRE EL TELÉFONO CONSTANTEMENTE */
+        .phone-screen::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #00f0ff, transparent);
+            box-shadow: 0 0 12px #00f0ff;
+            top: -10%;
+            animation: laserRadar 3.5s linear infinite;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        @keyframes laserRadar {
+            0% { top: -5%; }
+            50% { top: 105%; }
+            100% { top: 105%; }
         }
 
         .phone-header {
             display: flex;
             align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 8px;
+            gap: 12px;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+            padding-bottom: 10px;
         }
 
         .phone-avatar {
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             background: #00f0ff;
             border-radius: 50%;
-            box-shadow: 0 0 10px #00f0ff;
+            box-shadow: 0 0 12px #00f0ff;
         }
 
         .phone-status {
-            font-size: 11px;
+            font-size: 12px;
             color: #ffffff;
             font-weight: bold;
         }
@@ -322,35 +334,48 @@
             display: block;
             font-size: 9px;
             color: #00f0ff;
+            letter-spacing: 1px;
         }
 
-        /* Burbujas de chat animadas */
+        /* Chat del Asistente */
         .chat-bubble {
-            max-width: 85%;
-            padding: 10px 14px;
-            border-radius: 12px;
-            font-size: 11px;
-            line-height: 1.4;
-            animation: bubbleIntro 0.5s ease forwards;
+            max-width: 88%;
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-size: 11.5px;
+            line-height: 1.45;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: bubblePop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
         .chat-bubble.user {
-            background: #005c4b; /* Verde WhatsApp */
+            background: #004d40;
             color: #ffffff;
             align-self: flex-end;
             border-top-right-radius: 0;
+            animation-delay: 0.5s;
         }
 
         .chat-bubble.bot {
-            background: #202c33; /* Gris WhatsApp */
+            background: #1c2429;
             color: #e9edef;
             align-self: flex-start;
             border-top-left-radius: 0;
             border-left: 3px solid #00f0ff;
+            animation-delay: 1.8s;
+            position: relative;
         }
 
-        @keyframes bubbleIntro {
-            from { opacity: 0; transform: translateY(10px); }
+        .chat-bubble.user-2 {
+            background: #004d40;
+            color: #ffffff;
+            align-self: flex-end;
+            border-top-right-radius: 0;
+            animation-delay: 4.5s;
+        }
+
+        @keyframes bubblePop {
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -365,12 +390,12 @@
             width: 100%;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 240, 255, 0.2);
             text-align: left;
-            animation: fadeIn 0.4s ease forwards;
+            animation: wizardFadeIn 0.4s ease forwards;
             grid-column: span 2;
             margin: 0 auto;
         }
 
-        @keyframes fadeIn {
+        @keyframes wizardFadeIn {
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
@@ -496,7 +521,6 @@
             overflow: hidden;
         }
 
-        /* Escáner láser en tarjetas */
         .card::before {
             content: '';
             position: absolute;
@@ -640,10 +664,11 @@
 
         /* RESPONSIVE */
         @media (max-width: 950px) {
-            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero { grid-template-columns: 1fr; text-align: center; gap: 60px; }
             .hero-main-content { text-align: center; }
             .portfolio-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 38px; }
+            .phone-mockup { transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg); }
         }
     </style>
 </head>
@@ -695,9 +720,9 @@ class AuraBlueprintsModule:
                             <span>• Online / Active</span>
                         </div>
                     </div>
-                    <div class="chat-bubble user">Hoy trabajé en Escuela Burbank, ¿mis horas?</div>
-                    <div class="chat-bubble bot">Procesando... Identificado: Melvin. Registradas 5.0 Hrs hoy en Luther Burbank HS. Total semanal: 10.0 Hrs. 🛠️</div>
-                    <div class="chat-bubble user">Gracias!</div>
+                    <div class="chat-bubble user">Hoy fui a Burbank HS, ¿qué horas tengo?</div>
+                    <div class="chat-bubble bot">Identificado: Melvin. Tu registro en <b>Luther Burbank HS</b> indica 5.0 horas extras. Acumulado de la semana: 10.0 horas. 🛠️</div>
+                    <div class="chat-bubble user-2">¡Excelente!</div>
                 </div>
             </div>
         </div>
