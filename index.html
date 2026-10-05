@@ -39,7 +39,7 @@
 
   /* ---------- MASTHEAD ---------- */
   .masthead{border-top:5px solid var(--ink);border-bottom:1px solid var(--line-dark)}
-  .masthead-inner{display:flex;justify-content:space-between;align-items:center;padding:9px 0;
+  .masthead-inner{display:flex;justify-content:space-between;align-items:center;padding-block:9px;
     font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft)}
   .masthead-inner .mid{color:var(--ink-faint)}
 
@@ -64,7 +64,7 @@
 
   /* ---------- HERO ---------- */
   .hero{border-bottom:1px solid var(--line-dark)}
-  .hero-inner{padding:96px 0 88px;max-width:900px}
+  .hero-inner{padding-block:96px 88px;max-width:900px}
   .kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:30px}
   .kicker::before{content:"";width:10px;height:10px;background:var(--accent)}
   .hero h1{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(46px,6.4vw,88px);line-height:1.02;letter-spacing:-0.015em;margin-bottom:34px}
@@ -216,7 +216,7 @@
     .contact-card{border-right:none;border-bottom:1px solid var(--line-dark)}
     .contact-card:last-child{border-bottom:none}
     section.block{padding:76px 0}
-    .hero-inner{padding:72px 0 64px}
+    .hero-inner{padding-block:72px 64px}
     .svc{grid-template-columns:56px 1fr;gap:18px}
     .svc .go{display:none}
     .masthead-inner .mid{display:none}
@@ -226,7 +226,9 @@
     .step{border-right:none;border-bottom:1px solid var(--line-dark)}
     .step:last-child{border-bottom:none}
     .fact{grid-template-columns:1fr;gap:6px}
-    .hero-meta div{border-right:none;padding-right:0}
+    .hero-meta{flex-direction:column}
+    .hero-meta div{border-right:none;border-top:1px solid var(--line);padding:14px 0;margin-right:0}
+    .hero-meta div:first-child{border-top:none}
   }
 </style>
 </head>
